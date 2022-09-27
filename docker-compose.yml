@@ -6,3 +6,5 @@ services:
     image: node-docker
     ports:
       - "5000:5000"
+    volumes:
+      - vol:/app/node_modules
