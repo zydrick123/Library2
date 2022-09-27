@@ -7,4 +7,4 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./vol:/app/node_modules
+      - ./vol:/node_modules
