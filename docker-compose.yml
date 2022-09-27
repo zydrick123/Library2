@@ -2,6 +2,7 @@ version: "3"
 
 services:
   library-service:
+    restart: always
     build: .
     image: node-docker
     ports:
