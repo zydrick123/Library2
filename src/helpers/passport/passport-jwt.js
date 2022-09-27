@@ -7,7 +7,7 @@ const accountDB = require('../../data-access/accounts/index')
 const configureJWTStrat = () => {
     const opts = {
         jwtFromRequest: PassportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: 'SECRET_KEY.JWTSecret'
+        secretOrKey: SECRET_KEY.JWTSecret
     }
     Passport.use(new PassportJWT.Strategy(opts, async (payload, done) => {
         const { Username } = payload
