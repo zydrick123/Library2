@@ -17,7 +17,7 @@ const { accountRoute } = require('./routes/account/index')
 const { bookCopyRoute } = require('./routes/bookcopy/index')
 const { readerRoute } = require('./routes/reader/index')
 const { borrowerRoute } = require('./routes/borrower/index')
-const port = 5001; //
+const port = 5000; //
 
 //Initialize app
 app.use(cors());

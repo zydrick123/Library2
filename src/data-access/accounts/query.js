@@ -13,7 +13,7 @@ const accountQuery = ({ conn, encryptPasswordService, comparePasswordService }) 
         try {
 
             const connect = await conn()
-            let sql = 'SELECT * FROM accounts'
+            let sql = 'SELECT "AccountID", "Username", "Password", (SELECT "Firstname" FROM librarians WHERE "UserID" = accounts."UserID"  )"UserID", "Roles", "Status"  FROM accounts'
             const response = await connect.query(sql)
             return response
         } catch (error) {
