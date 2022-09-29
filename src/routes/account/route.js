@@ -2,9 +2,9 @@ const { getAllAccountsController, addAccountController, updateAccountController,
 
 const accountRoutes = ({ accountRouter, makeExpressCallback }) => {
     accountRouter.get('/api/accounts', makeExpressCallback(getAllAccountsController))
-    accountRouter.post('/api/accounts/login', makeExpressCallback(loginAccountsController))
-    accountRouter.post('/api/accounts', makeExpressCallback(addAccountController))
-    accountRouter.patch('/api/accounts/:id', makeExpressCallback(updateAccountController))
+        .post('/api/accounts/login', makeExpressCallback(loginAccountsController))
+        .post('/api/accounts', makeExpressCallback(addAccountController))
+        .patch('/api/accounts/:id', makeExpressCallback(updateAccountController))
     return accountRouter
 }
 module.exports = accountRoutes

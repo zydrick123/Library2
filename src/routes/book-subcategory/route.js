@@ -2,8 +2,8 @@ const { getAllBookSubCatsController, addBookSubCatController, updateBookSubCatCo
 
 const bookSubCatRoutes = ({ bookSubCatRouter, makeExpressCallback }) => {
     bookSubCatRouter.get('/api/book-subcat', makeExpressCallback(getAllBookSubCatsController))
-    bookSubCatRouter.post('/api/book-subcat', makeExpressCallback(addBookSubCatController))
-    bookSubCatRouter.patch('/api/book-subcat/:id', makeExpressCallback(updateBookSubCatController))
+        .post('/api/book-subcat', makeExpressCallback(addBookSubCatController))
+        .patch('/api/book-subcat/:id', makeExpressCallback(updateBookSubCatController))
     return bookSubCatRouter
 }
 module.exports = bookSubCatRoutes

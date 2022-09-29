@@ -2,8 +2,8 @@ const { getAllCitysController, addCityController, updateCityController } = requi
 
 const cityRoutes = ({ cityRouter, makeExpressCallback }) => {
     cityRouter.get('/api/city', makeExpressCallback(getAllCitysController))
-    cityRouter.post('/api/city', makeExpressCallback(addCityController))
-    cityRouter.patch('/api/city/:id', makeExpressCallback(updateCityController))
+        .post('/api/city', makeExpressCallback(addCityController))
+        .patch('/api/city/:id', makeExpressCallback(updateCityController))
     return cityRouter
 }
 module.exports = cityRoutes

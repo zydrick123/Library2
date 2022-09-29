@@ -17,7 +17,7 @@ const { accountRoute } = require('./routes/account/index')
 const { bookCopyRoute } = require('./routes/bookcopy/index')
 const { readerRoute } = require('./routes/reader/index')
 const { borrowerRoute } = require('./routes/borrower/index')
-const port = 5000; //
+const port = 5001; //
 
 //Initialize app
 app.use(cors());
@@ -35,15 +35,15 @@ const server = app.listen(port, () => {
 
 //initialize routes
 app.use('/', librarianRoute)
-app.use('/', bookRoute)
-app.use('/', authorRoute)
-app.use('/', shelfRoute)
-app.use('/', publisherRoute)
-app.use('/', bookSubCatRoute)
-app.use('/', bookCatRoute)
-app.use('/', cityRoute)
-app.use('/', accountRoute)
-app.use('/', bookCopyRoute)
-app.use('/', readerRoute)
-app.use('/', borrowerRoute)
+    .use('/', bookRoute)
+    .use('/', authorRoute)
+    .use('/', shelfRoute)
+    .use('/', publisherRoute)
+    .use('/', bookSubCatRoute)
+    .use('/', bookCatRoute)
+    .use('/', cityRoute)
+    .use('/', accountRoute)
+    .use('/', bookCopyRoute)
+    .use('/', readerRoute)
+    .use('/', borrowerRoute)
 module.exports = { app }
