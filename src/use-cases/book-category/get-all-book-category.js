@@ -8,6 +8,7 @@ const getAllBookCat = ({ bookCatDB }) => {
             const dataValue = {}
             dataValue.b_subcategoryID = data.b_subcategoryID
             dataValue.categoryName = data.categoryName
+            dataValue.categoryID = data.categoryID
 
 
 
