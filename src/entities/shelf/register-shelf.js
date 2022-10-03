@@ -1,6 +1,6 @@
 const makeShelf = ({ data }) => {
 
-    const { shelfname, location } = data;
+    const { shelfname, location, CategoryID } = data;
     if (!shelfname) {
         throw new Error('Please enter shelf name')
     }
