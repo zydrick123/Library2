@@ -6,7 +6,7 @@ const getAllBookSubCat = ({ bookSubCatDB }) => {
         for (let data of result.rows) {
 
             const dataValue = {}
-            dataValue.SubcategoryID = data.SubcategoryID
+            dataValue.subcategoryID = data.subcategoryID
             dataValue.name = data.name
 
 
