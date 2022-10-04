@@ -1,5 +1,5 @@
 const updateReader = ({ data }) => {
-    const { ReaderNo, Firstname, Lastname, Birthdate, Gender, RegisterDate, ContactNo, Status, CityID, id } = data;
+    const { ReaderNo, Firstname, Lastname, Birthdate, Gender, RegisterDate, ContactNo, Status, City, id } = data;
 
 
     if (!ReaderNo) {
@@ -26,8 +26,8 @@ const updateReader = ({ data }) => {
     if (!Status) {
         throw new Error('Please enter Status')
     }
-    if (!CityID) {
-        throw new Error('Please enter CityID')
+    if (!City) {
+        throw new Error('Please enter City')
     }
     if (!LibrarianID) {
         throw new Error('Please enter LibrarianID')
@@ -50,7 +50,7 @@ const updateReader = ({ data }) => {
         getRegisterDate: () => RegisterDate,
         getContactNo: () => ContactNo,
         getStatus: () => Status,
-        getCityID: () => CityID,
+        getCity: () => City,
         getLibrarianID: () => LibrarianID,
         getID: () => id
     })

@@ -9,7 +9,7 @@ const readerQuery = ({ conn }) => {
         updateReader,
         removeReader,
         isExisting,
-        checkCityID,
+
         checkLibrarianID
         // loginReader
 
@@ -34,7 +34,7 @@ const readerQuery = ({ conn }) => {
     }
 
     //create reader
-    async function createReader({ ReaderNo, Firstname, Lastname, Birthdate, Gender, RegisterDate, ContactNo, Status, CityID, LibrarianID }) {
+    async function createReader({ ReaderNo, Firstname, Lastname, Birthdate, Gender, RegisterDate, ContactNo, Status, City, LibrarianID }) {
 
         try {
             // let encryptedpwd = encryptPasswordService([password])
@@ -44,8 +44,8 @@ const readerQuery = ({ conn }) => {
 
 
 
-            const params = [ReaderNo, Firstname, Lastname, Birthdate, Gender, RegisterDate, ContactNo, Status, CityID, LibrarianID]
-            let sql = 'INSERT INTO readers ( "ReaderNo", "Firstname", "Lastname", "Birthdate","Gender", "RegisterDate","ContactNo","Status","CityID","LibrarianID") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) returning *'
+            const params = [ReaderNo, Firstname, Lastname, Birthdate, Gender, RegisterDate, ContactNo, Status, City, LibrarianID]
+            let sql = 'INSERT INTO readers ( "ReaderNo", "Firstname", "Lastname", "Birthdate","Gender", "RegisterDate","ContactNo","Status","City","LibrarianID") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) returning *'
             // const { firstname, middlename, lastname, gender } = makeReader
 
 
@@ -115,7 +115,7 @@ const readerQuery = ({ conn }) => {
             console.log('error ID')
         }
     }
-    async function updateReader({ ReaderNo, Firstname, Lastname, Birthdate, Gender, RegisterDate, ContactNo, Status, CityID, LibrarianID, id }) {
+    async function updateReader({ ReaderNo, Firstname, Lastname, Birthdate, Gender, RegisterDate, ContactNo, Status, City, LibrarianID, id }) {
 
 
 
@@ -124,8 +124,8 @@ const readerQuery = ({ conn }) => {
             const connect = await conn()
 
 
-            const sql = 'UPDATE readers SET  "ReaderNo" = $1, "Firstname" = $2, "Lastname" = $3, "Birthdate" = $4,"Gender" = $5, "RegisterDate" = $6, "ContactNo" = $7,"Status" = $8,"CityID" = $9, "LibrarianID" = $10 WHERE "ReaderID" = $10 returning *'
-            let params = [ReaderNo, Firstname, Lastname, Birthdate, Gender, RegisterDate, ContactNo, Status, CityID, LibrarianID, id]
+            const sql = 'UPDATE readers SET  "ReaderNo" = $1, "Firstname" = $2, "Lastname" = $3, "Birthdate" = $4,"Gender" = $5, "RegisterDate" = $6, "ContactNo" = $7,"Status" = $8,"City" = $9, "LibrarianID" = $10 WHERE "ReaderID" = $10 returning *'
+            let params = [ReaderNo, Firstname, Lastname, Birthdate, Gender, RegisterDate, ContactNo, Status, City, LibrarianID, id]
             const response = await connect.query(sql, params)
             // console.log(response)
 
@@ -136,17 +136,7 @@ const readerQuery = ({ conn }) => {
 
     }
 
-    async function checkCityID({ CityID }) {
-        try {
-            const connect = await conn()
-            let params = [CityID]
-            const sql = 'SELECT * FROM readers WHERE EXISTS (SELECT * FROM city WHERE "CityID" = $1)'
-            const response = await connect.query(sql, params)
-            return response.rows
-        } catch (error) {
-            console.log("Error2: ", error);
-        }
-    }
+
     async function checkLibrarianID({ LibrarianID }) {
         try {
             const connect = await conn()

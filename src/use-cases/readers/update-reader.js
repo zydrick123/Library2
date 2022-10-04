@@ -22,7 +22,7 @@ const updateReader = ({ readerDB, updateReader_Entity }) => {
             RegisterDate: entity.getRegisterDate(),
             ContactNo: entity.getContactNo(),
             Status: entity.getStatus(),
-            CityID: entity.getCityID(),
+            City: entity.getCity(),
             LibrarianID: entity.getLibrarianID(),
 
             id: entity.getID(),

@@ -33,7 +33,7 @@ const createReader = ({ readerDB, registerReader_Entity }) => {
             RegisterDate: entity.getRegisterDate(),
             ContactNo: entity.getContactNo(),
             Status: entity.getStatus(),
-            CityID: entity.getCityID(),
+            City: entity.getCity(),
             LibrarianID: entity.getLibrarianID(),
 
 
@@ -52,7 +52,7 @@ const createReader = ({ readerDB, registerReader_Entity }) => {
                 RegisterDate: res[0].RegisterDate,
                 ContactNo: res[0].ContactNo,
                 Status: res[0].Status,
-                CityId: res[0].CityId,
+                City: res[0].City,
                 LibrarianID: res[0].LibrarianID,
 
 

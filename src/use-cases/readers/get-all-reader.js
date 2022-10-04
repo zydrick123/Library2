@@ -15,7 +15,7 @@ const getAllReader = ({ readerDB }) => {
             dataValue.RegisterDate = data.RegisterDate
             dataValue.ContactNo = data.ContactNo
             dataValue.Status = data.Status
-            dataValue.CityID = data.CityID
+            dataValue.City = data.City
             dataValue.LibrarianID = data.LibrarianID
 
 
