@@ -11,11 +11,9 @@ const updateBorrower = ({ data }) => {
     }
 
 
-    if (!Status) {
-        throw new Error('Please enter Status')
-    }
+
     if (!LibrarianID) {
-        throw new Error('Please enter Status')
+        throw new Error('Please enter LibrarianID')
     }
 
 
