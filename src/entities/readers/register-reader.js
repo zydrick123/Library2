@@ -1,6 +1,6 @@
 const makeReader = ({ data }) => {
 
-    const { ReaderNo, Firstname, Lastname, Birthdate, Gender, RegisterDate, ContactNo, Status, City } = data;
+    const { ReaderNo, Firstname, Lastname, Birthdate, Gender, RegisterDate, ContactNo, Status, City, LibrarianID } = data;
     if (!ReaderNo) {
         throw new Error('Please enter ReaderNo')
     }
