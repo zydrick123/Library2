@@ -10,13 +10,9 @@ const makeBorrower = ({ data }) => {
     if (!DateIssued) {
         throw new Error('Please enter DateIssued')
     }
-    if (!DateReturned) {
-        throw new Error('Please enter DateReturned')
-    }
 
-    if (!Penalty) {
-        throw new Error('Please enter Penalty')
-    }
+
+
     if (!Status) {
         throw new Error('Please enter Status')
     }
