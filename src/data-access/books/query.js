@@ -27,7 +27,7 @@ const bookQuery = ({ conn }) => {
             const connect = await conn()
 
             let params = [ISBN, Title, YearPublish, AuthorID, PageNo, PublisherID]
-            let sql = 'INSERT INTO books ( "ISBN","Title","YearPublish","AuthorID","PageNo","PublisherID") VALUES ($1,$2,$3,$4,$5,$6,$7) returning *'
+            let sql = 'INSERT INTO books ( "ISBN","Title","YearPublish","AuthorID","PageNo","PublisherID") VALUES ($1,$2,$3,$4,$5,$6) returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {
