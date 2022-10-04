@@ -1,5 +1,5 @@
 const updateBorrower = ({ data }) => {
-    const { ReaderID, CopyID, DateIssued, DateReturned, Penalty, Status } = data;
+    const { ReaderID, CopyID, DateIssued, DateReturned, Penalty, Status, LibrarianID } = data;
     if (!ReaderID) {
         throw new Error('Please enter ReaderID')
     }
