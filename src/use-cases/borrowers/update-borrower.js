@@ -16,6 +16,7 @@ const updateBorrower = ({ borrowerDB, updateBorrower_Entity }) => {
             Status: entity.getStatus(),
             LibrarianID: entity.getLibrarianID(),
             remarks: entity.getremarks(),
+            DueDate: entity.getDueDate(),
             id: entity.getID(),
         })
         if (res === 0) { throw new Error('Failed to update Borrower') }

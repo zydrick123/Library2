@@ -16,13 +16,13 @@ const getAllBorrower = ({ borrowerDB }) => {
             dataValue.Status = data.Status
             dataValue.LibrarianID = data.LibrarianID
             dataValue.remarks = data.remarks
-
+            dateValue.DueDate = data.DueDate
 
             borrowerList.push(dataValue)
 
         }
 
-        console.log('use-cases triggered', borrowerList)
+
 
         return borrowerList
     }

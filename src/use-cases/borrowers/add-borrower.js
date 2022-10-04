@@ -35,6 +35,7 @@ const createBorrower = ({ borrowerDB, registerBorrower_Entity }) => {
             Status: entity.getStatus(),
             LibrarianID: entity.getLibrarianID(),
             remarks: entity.getremarks(),
+            DueDate: enitity.getDueDate(),
 
 
         })
@@ -52,6 +53,7 @@ const createBorrower = ({ borrowerDB, registerBorrower_Entity }) => {
                 Status: res[0].Status,
                 LibrarianID: res[0].LibrarianID,
                 remarks: res[0].remarks,
+                DueDate: res[0].DueDate,
 
 
 
