@@ -1,6 +1,6 @@
 const makeBorrower = ({ data }) => {
 
-    const { ReaderID, CopyID, DateIssued, DateReturned, Penalty, Status, LibrarianID, remarks, DueDate } = data;
+    const { ReaderID, CopyID, DateIssued, DateReturned, Penalty, Status, LibrarianID, DueDate, remarks } = data;
     if (!ReaderID) {
         throw new Error('Please enter ReaderID')
     }
@@ -25,7 +25,6 @@ const makeBorrower = ({ data }) => {
         getCopyID: () => CopyID,
         getDateIssued: () => DateIssued,
         getDateReturned: () => DateReturned,
-
         getPenalty: () => Penalty,
         getStatus: () => Status,
         getLibrarianID: () => LibrarianID,

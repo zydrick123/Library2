@@ -15,6 +15,7 @@ const borrowerQuery = ({ conn }) => {
             const connect = await conn()
             let sql = 'SELECT * FROM borrowers'
             const response = await connect.query(sql)
+
             return response
         } catch (error) {
             console.log('error: ', error)
@@ -26,7 +27,7 @@ const borrowerQuery = ({ conn }) => {
             const connect = await conn()
 
             let params = [ReaderID, CopyID, DateIssued, DateReturned, Penalty, Status, LibrarianID, remarks, DueDate]
-            let sql = 'INSERT INTO borrowers ( "ReaderID", "CopyID", "DateIssued", "DateReturned",  "Penalty", "Status","LibrarianID",remarks,"DueDate") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) returning *'
+            let sql = 'INSERT INTO borrowers ( "ReaderID", "CopyID", "DateIssued", "DateReturned",  "Penalty", "Status", "LibrarianID" ,remarks,"DueDate" ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {

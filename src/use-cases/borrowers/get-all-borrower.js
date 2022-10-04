@@ -11,12 +11,11 @@ const getAllBorrower = ({ borrowerDB }) => {
             dataValue.CopyID = data.CopyID
             dataValue.DateIssued = data.DateIssued
             dataValue.DateReturned = data.DateReturned
-
             dataValue.Penalty = data.Penalty
             dataValue.Status = data.Status
             dataValue.LibrarianID = data.LibrarianID
             dataValue.remarks = data.remarks
-            dateValue.DueDate = data.DueDate
+            dataValue.DueDate = data.DueDate
 
             borrowerList.push(dataValue)
 
