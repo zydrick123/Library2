@@ -11,7 +11,7 @@ const getAllBorrower = ({ borrowerDB }) => {
             dataValue.CopyID = data.CopyID
             dataValue.DateIssued = data.DateIssued
             dataValue.DateReturned = data.DateReturned
-            dataValue.Quantity = data.Quantity
+
             dataValue.Penalty = data.Penalty
             dataValue.Status = data.Status
             dataValue.LibrarianID = data.LibrarianID

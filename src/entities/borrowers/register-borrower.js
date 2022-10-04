@@ -1,6 +1,6 @@
 const makeBorrower = ({ data }) => {
 
-    const { ReaderID, CopyID, DateIssued, DateReturned, Quantity, Penalty, Status } = data;
+    const { ReaderID, CopyID, DateIssued, DateReturned, Penalty, Status } = data;
     if (!ReaderID) {
         throw new Error('Please enter ReaderID')
     }
@@ -13,9 +13,7 @@ const makeBorrower = ({ data }) => {
     if (!DateReturned) {
         throw new Error('Please enter DateReturned')
     }
-    if (!Quantity) {
-        throw new Error('Please enter Quantity')
-    }
+
     if (!Penalty) {
         throw new Error('Please enter Penalty')
     }
@@ -33,7 +31,7 @@ const makeBorrower = ({ data }) => {
         getCopyID: () => CopyID,
         getDateIssued: () => DateIssued,
         getDateReturned: () => DateReturned,
-        getQuantity: () => Quantity,
+
         getPenalty: () => Penalty,
         getStatus: () => Status,
         getLibrarianID: () => LibrarianID,

@@ -30,7 +30,7 @@ const createBorrower = ({ borrowerDB, registerBorrower_Entity }) => {
             CopyID: entity.getCopyID(),
             DateIssued: entity.getDateIssued(),
             DateReturned: entity.getDateReturned(),
-            Quantity: entity.getQuantity(),
+
             Penalty: entity.getPenalty(),
             Status: entity.getStatus(),
             LibrarianID: entity.getLibrarianID(),
@@ -38,7 +38,7 @@ const createBorrower = ({ borrowerDB, registerBorrower_Entity }) => {
 
 
         })
-        checkLibrarianID
+
 
         if (res) {
             return {
@@ -47,7 +47,7 @@ const createBorrower = ({ borrowerDB, registerBorrower_Entity }) => {
                 CopyID: res[0].CopyID,
                 DateIssued: res[0].DateIssued,
                 DateReturned: res[0].DateReturned,
-                Quantity: res[0].Quantity,
+
                 Penalty: res[0].Penalty,
                 Status: res[0].Status,
                 LibrarianID: res[0].LibrarianID,

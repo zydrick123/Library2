@@ -11,7 +11,7 @@ const updateBorrower = ({ borrowerDB, updateBorrower_Entity }) => {
             CopyID: entity.getCopyID(),
             DateIssued: entity.getDateIssued(),
             DateReturned: entity.getDateReturned(),
-            Quantity: entity.getQuantity(),
+
             Penalty: entity.getPenalty(),
             Status: entity.getStatus(),
             LibrarianID: entity.getLibrarianID(),

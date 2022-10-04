@@ -21,12 +21,12 @@ const borrowerQuery = ({ conn }) => {
         }
 
     }
-    async function createBorrower({ ReaderID, CopyID, DateIssued, DateReturned, Quantity, Penalty, Status, LibrarianID, remarks }) {
+    async function createBorrower({ ReaderID, CopyID, DateIssued, DateReturned, Penalty, Status, LibrarianID, remarks }) {
         try {
             const connect = await conn()
 
-            let params = [ReaderID, CopyID, DateIssued, DateReturned, Quantity, Penalty, Status, LibrarianID, remarks]
-            let sql = 'INSERT INTO borrowers ( "ReaderID", "CopyID", "DateIssued", "DateReturned", "Quantity", "Penalty", "Status","LibrarianID",remarks) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) returning *'
+            let params = [ReaderID, CopyID, DateIssued, DateReturned, Penalty, Status, LibrarianID, remarks]
+            let sql = 'INSERT INTO borrowers ( "ReaderID", "CopyID", "DateIssued", "DateReturned",  "Penalty", "Status","LibrarianID",remarks) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {
@@ -34,11 +34,11 @@ const borrowerQuery = ({ conn }) => {
         }
     }
 
-    async function updateBorrower({ ReaderID, CopyID, DateIssued, DateReturned, Quantity, Penalty, Status, LibrarianID, remarks, id }) {
+    async function updateBorrower({ ReaderID, CopyID, DateIssued, DateReturned, Penalty, Status, LibrarianID, remarks, id }) {
         try {
             const connect = await conn()
-            let params = [ReaderID, CopyID, DateIssued, DateReturned, Quantity, Penalty, Status, LibrarianID, remarks, id]
-            const sql = 'UPDATE borrowers SET "ReaderID"= $1, "CopyID"= $2, "DateIssued"= $3, "DateReturned" = $4, "Quantity" = $5, "Penalty" = $6, "Status" = $7 ,"LibrarianID" = $8 , remarks = $9 WHERE "BorrowerID" = $10 returning *'
+            let params = [ReaderID, CopyID, DateIssued, DateReturned, , Penalty, Status, LibrarianID, remarks, id]
+            const sql = 'UPDATE borrowers SET "ReaderID"= $1, "CopyID"= $2, "DateIssued"= $3, "DateReturned" = $4,  "Penalty" = $5, "Status" = $6 ,"LibrarianID" = $7 , remarks = $8 WHERE "BorrowerID" = $9 returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {
