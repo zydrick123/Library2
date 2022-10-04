@@ -37,7 +37,7 @@ const borrowerQuery = ({ conn }) => {
     async function updateBorrower({ ReaderID, CopyID, DateIssued, DateReturned, Penalty, Status, LibrarianID, remarks, id, DueDate }) {
         try {
             const connect = await conn()
-            let params = [ReaderID, CopyID, DateIssued, DateReturned, , Penalty, Status, LibrarianID, remarks, id, DueDate]
+            let params = [ReaderID, CopyID, DateIssued, DateReturned, , Penalty, Status, LibrarianID, remarks, DueDate, id]
             const sql = 'UPDATE borrowers SET "ReaderID"= $1, "CopyID"= $2, "DateIssued"= $3, "DateReturned" = $4,  "Penalty" = $5, "Status" = $6 ,"LibrarianID" = $7 , remarks = $8,"DueDate" = $9 WHERE "BorrowerID" = $10 returning *'
             const response = await connect.query(sql, params)
             return response.rows
