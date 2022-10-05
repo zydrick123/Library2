@@ -8,7 +8,7 @@ const getAllAccount = ({ accountDB }) => {
             const dataValue = {}
             dataValue.Username = data.Username
             dataValue.Password = data.Password
-            dataValue.Lastname = data.Lastname
+            dataValue.UserID = data.UserID
             dataValue.Roles = data.Roles
             dataValue.Status = data.Status
 
