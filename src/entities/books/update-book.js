@@ -1,45 +1,49 @@
 const updateBook = ({ data }) => {
-    const { ISBN, Title, YearPublish, AuthorID, PageNo, PublisherID, id } = data;
+    const { title, author, publication_year, no_of_pages, no_of_copies, shelf, p_publisher_id, c_category_id, id } = data;
 
-
-    if (!ISBN) {
-        throw new Error('Please enter ISBN')
+    if (!title) {
+        throw new Error('Please enter title')
     }
-    if (!Title) {
-        throw new Error('Please enter Title')
+    if (!author) {
+        throw new Error('Please enter Author')
     }
-    if (!YearPublish) {
-        throw new Error('Please enter YearPublish')
+    if (!publication_year) {
+        throw new Error('Please enter publication_year')
     }
-    if (!AuthorID) {
-        throw new Error('Please enter AuthorID')
-    }
-    if (!PageNo) {
-        throw new Error('Please enter PageNo')
+    if (!no_of_pages) {
+        throw new Error('Please enter no_of_pages')
     }
 
-    if (!PublisherID) {
-        throw new Error('Please enter PublisherID')
+    if (!no_of_copies) {
+        throw new Error('Please enter no_of_copies')
     }
-
+    if (!shelf) {
+        throw new Error('Please enter shelf')
+    }
+    if (!p_publisher_id) {
+        throw new Error('Please enter p_publisher_id')
+    }
+    if (!c_category_id) {
+        throw new Error('Please enter c_category_id')
+    }
     if (!id) {
 
         throw new Error('Request error ID not found')
     }
 
 
-
     return Object.freeze({
 
-        getISBN: () => ISBN,
-        getTitle: () => Title,
-        getYearPublish: () => YearPublish,
-        getAuthorID: () => AuthorID,
-        getPageNo: () => PageNo,
-
-        getPublisherID: () => PublisherID,
+        gettitle: () => title,
+        getauthor: () => author,
+        getpublication_year: () => publication_year,
+        getno_of_pages: () => no_of_pages,
+        getno_of_copies: () => no_of_copies,
+        getshelf: () => shelf,
+        getp_publisher_id: () => p_publisher_id,
+        getc_category_id: () => c_category_id,
         getID: () => id
-    })
 
+    })
 }
 module.exports = updateBook

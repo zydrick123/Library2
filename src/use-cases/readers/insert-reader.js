@@ -10,31 +10,27 @@ const createReader = ({ readerDB, registerReader_Entity }) => {
         //     throw new Error('Duplicate')
         // }
         const isExisting = await readerDB.isExisting({
-            Firstname: entity.getFirstname(),
-            Lastname: entity.getLastname()
+            u_first_name: entity.getu_first_name(),
+            u_last_name: entity.getu_last_name()
         })
         if (isExisting.length > 0) {
             throw new Error('User exist')
         }
-        const checkLibrarianID = await readerDB.checkLibrarianID({
-            LibrarianID: entity.getLibrarianID(),
+        const checku_user_id = await readerDB.checku_user_id({
+            u_user_id: entity.getu_user_id(),
 
         })
-        if (checkLibrarianID.length === 0) {
-            throw new Error('LibrarianID does not exist')
+        if (checku_user_id.length === 0) {
+            throw new Error('User does not exist')
         }
 
         const res = await readerDB.createReader({
-            ReaderNo: entity.getReaderNo(),
-            Firstname: entity.getFirstname(),
-            Lastname: entity.getLastname(),
-            Birthdate: entity.getBirthdate(),
-            Gender: entity.getGender(),
-            RegisterDate: entity.getRegisterDate(),
-            ContactNo: entity.getContactNo(),
-            Status: entity.getStatus(),
-            City: entity.getCity(),
-            LibrarianID: entity.getLibrarianID(),
+            u_user_id: entity.getu_user_id(),
+            u_first_name: entity.getu_first_name(),
+            u_last_name: entity.getu_last_name(),
+            date_of_birth: entity.getdate_of_birth(),
+            city: entity.getcity(),
+
 
 
 
@@ -45,15 +41,11 @@ const createReader = ({ readerDB, registerReader_Entity }) => {
             return {
                 message: 'Reader registered succesfully',
                 ReaderNo: res[0].ReaderNo,
-                Firstname: res[0].Firstname,
-                Lastname: res[0].Lastname,
-                Birthdate: res[0].Birthdate,
-                Gender: res[0].Gender,
-                RegisterDate: res[0].RegisterDate,
-                ContactNo: res[0].ContactNo,
-                Status: res[0].Status,
-                City: res[0].City,
-                LibrarianID: res[0].LibrarianID,
+                u_first_name: res[0].u_first_name,
+                u_last_name: res[0].u_last_name,
+                date_of_birth: res[0].date_of_birth,
+                city: res[0].city,
+                u_user_id: res[0].u_user_id,
 
 
             }

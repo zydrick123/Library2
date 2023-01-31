@@ -11,7 +11,7 @@ const publisherQuery = ({ conn }) => {
         try {
 
             const connect = await conn()
-            let sql = 'SELECT * FROM publishers'
+            let sql = 'SELECT * FROM "Publishers"'
             const response = await connect.query(sql)
             return response
         } catch (error) {
@@ -19,24 +19,24 @@ const publisherQuery = ({ conn }) => {
         }
 
     }
-    async function createPublisher({ firstname, middlename, lastname, location }) {
+    async function createPublisher({ publisher_name, location }) {
         try {
             const connect = await conn()
 
-            let params = [firstname, middlename, lastname, location]
-            let sql = 'INSERT INTO publishers ( "Firstname", "Middlename", "Lastname", "Location") VALUES ($1,$2,$3,$4) returning *'
+            let params = [publisher_name, location]
+            let sql = 'INSERT INTO "Publishers" ( "publisher_name", "location") VALUES ($1,$2) returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {
             console.log('Error: ', error)
         }
     }
-    async function isExisting({ firstname, lastname }) {
+    async function isExisting({ publisher_name }) {
         try {
             const connect = await conn()
-            //  const { firstname, lastname } = data
-            let params = [firstname, lastname]
-            let sql = 'SELECT * FROM publishers WHERE "Firstname" =$1 AND "Lastname"= $2'
+            //  const { publisher_name, lastname } = data
+            let params = [publisher_name]
+            let sql = 'SELECT * FROM "Publishers" WHERE "publisher_name" =$1'
             const response = await connect.query(sql, params)
             return response.rows
 
@@ -44,11 +44,11 @@ const publisherQuery = ({ conn }) => {
             console.log('Error: ', error)
         }
     }
-    async function updatePublisher({ firstname, middlename, lastname, location, id }) {
+    async function updatePublisher({ publisher_name, location, id }) {
         try {
             const connect = await conn()
-            let params = [firstname, middlename, lastname, location, id]
-            const sql = 'UPDATE publishers SET "Firstname" = $1, "Middlename"= $2, "Lastname" = $3 , "Location" = $4 WHERE "publisherID" = $5 returning *'
+            let params = [publisher_name, location, id]
+            const sql = 'UPDATE "Publishers" SET "publisher_name" = $1, "location" = $2 WHERE "publisher_id" = $3 returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {
@@ -58,7 +58,7 @@ const publisherQuery = ({ conn }) => {
     async function getPublisher({ id }) {
         try {
             const connect = await conn()
-            let sql = 'SELECT * FROM publishers WHERE "publisherID" = $1'
+            let sql = 'SELECT * FROM "Publishers" WHERE "publisher_id" = $1'
             let params = [id]
             const response = await connect.query(sql, params)
             return response.rows
@@ -66,16 +66,6 @@ const publisherQuery = ({ conn }) => {
             console.log('Error1: ', error)
         }
     }
-    // async function removePublisher({ id }) {
-    //     try {
-    //         const connect = await conn()
-    //         const sql = 'DELETE FROM publishers WHERE "PublisherID" = $1'
-    //         let params = [id]
-    //         const response = await connect.query(sql, params)
-    //         return response
-    //     } catch (error) {
-    //         console.log("Error: ", error);
-    //     }
-    // }
+
 }
 module.exports = publisherQuery

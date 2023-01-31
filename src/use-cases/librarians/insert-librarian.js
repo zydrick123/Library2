@@ -2,45 +2,41 @@ const createLibrarian = ({ librarianDB, registerLibrarian_Entity }) => {
     return async function add(data) {
 
         let entity = await registerLibrarian_Entity({ data })
-        //     const { serial } = entity
 
-        // const distinctLibrarian = await bookDB.distinctLibrarian({ serial })
-
-        // if (distincBook.rowCount > 0) {
-        //     throw new Error('Duplicate')
-        // }
         const isExisting = await librarianDB.isExisting({
-            Firstname: entity.getFirstname(),
-            Lastname: entity.getLastname()
+            first_name: entity.getfirst_name(),
+            last_name: entity.getlast_name()
         })
 
         if (isExisting.length > 0) {
-            throw new Error('User exist')
+            throw new Error('Librarian exist')
+        }
+        const checku_user_id = await librarianDB.checku_user_id({
+            u_user_id: entity.getu_user_id(),
+
+        })
+
+        if (checku_user_id.length === 0) {
+            throw new Error('User does not exist')
         }
 
         const res = await librarianDB.createLibrarian({
-            Firstname: entity.getFirstname(),
-            Middlename: entity.getMiddlename(),
-            Lastname: entity.getLastname(),
-            Gender: entity.getGender(),
-            RegisterDate: entity.getRegisterDate(),
+            first_name: entity.getfirst_name(),
+            last_name: entity.getlast_name(),
 
-
+            u_user_id: entity.getu_user_id(),
         })
 
 
         if (res) {
             return {
                 message: 'Librarian registered succesfully',
-                Firstname: res[0].Firstname,
-                Middlename: res[0].Middlename,
-                Lastname: res[0].Lastname,
-                Gender: res[0].Gender,
-                RegisterDate: res[0].RegisterDate,
+                first_name: res[0].first_name,
+                last_name: res[0].last_name,
+                u_user_id: res[0].u_user_id,
 
             }
         }
-        // throw new Error('failed')
 
     }
 }

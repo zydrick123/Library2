@@ -8,11 +8,9 @@ const updateLibrarian = ({ librarianDB, updateLibrarian_Entity }) => {
         let entity = await updateLibrarian_Entity({ data })
 
         const res = await librarianDB.updateLibrarian({
-            Firstname: entity.getFirstname(),
-            Middlename: entity.getMiddlename(),
-            Lastname: entity.getLastname(),
-            Gender: entity.getGender(),
-
+            first_name: entity.getfirst_name(),
+            last_name: entity.getlast_name(),
+            u_user_id: entity.getu_user_id(),
             id: entity.getID(),
 
         })

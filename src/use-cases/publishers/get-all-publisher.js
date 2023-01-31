@@ -6,19 +6,14 @@ const getAllPublisher = ({ publisherDB }) => {
         for (let data of result.rows) {
 
             const dataValue = {}
-            dataValue.publisherID = data.publisherID
-            dataValue.Firstname = data.Firstname
-            dataValue.Middlename = data.Middlename
-            dataValue.Lastname = data.Lastname
-            dataValue.Location = data.Location
+            dataValue.publisher_id = data.publisher_id
+            dataValue.publisher_name = data.publisher_name
+            dataValue.location = data.location
 
 
             publisherList.push(dataValue)
 
         }
-        console.log('test')
-        console.log('use-cases triggered', publisherList)
-
         return publisherList
     }
 

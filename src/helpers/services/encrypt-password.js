@@ -1,8 +1,8 @@
 const encryptPassword = ({ bcrypt }) => {
     return function encode(data) {
-        const [Password] = data
+        const [password] = data
         const salt = bcrypt.genSaltSync(10)
-        return bcrypt.hashSync(Password, salt)
+        return bcrypt.hashSync(password, salt)
     }
 }
 module.exports = encryptPassword 

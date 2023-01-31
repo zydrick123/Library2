@@ -1,35 +1,22 @@
 const updateLibrarian = ({ data }) => {
-    const { Firstname, Middlename, Lastname, Gender, RegisterDate, id } = data;
-
-
-    if (!Firstname) {
-        throw new Error('Please enter Firstname')
+    const { first_name, last_name, u_user_id, id } = data;
+    if (!first_name) {
+        throw new Error('Please enter username')
     }
-    if (!Lastname) {
-        throw new Error('Please enter Lastname')
+    if (!last_name) {
+        throw new Error('Please enter last_name')
     }
-    if (!Gender) {
-        throw new Error('Please enter Gender')
+    if (!u_user_id) {
+        throw new Error('Please enter user id')
     }
-    if (!RegisterDate) {
-        throw new Error('Please enter RegisterDate')
-    }
-
     if (!id) {
 
         throw new Error('Request error ID not found')
     }
-
-
-
     return Object.freeze({
-
-        getFirstname: () => Firstname,
-        getMiddlename: () => Middlename,
-        getLastname: () => Lastname,
-        getGender: () => Gender,
-        getRegisterDate: () => RegisterDate,
-
+        getfirst_name: () => first_name,
+        getlast_name: () => last_name,
+        getu_user_id: () => u_user_id,
         getID: () => id
     })
 

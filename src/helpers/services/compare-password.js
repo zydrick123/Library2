@@ -1,8 +1,9 @@
 const comparePassword = ({ bcrypt }) => {
     return function encode(data) {
 
-        const { Password, encryptPassword } = data
-        return bcrypt.compareSync(Password, encryptPassword)
+        const { password, encryptPassword } = data
+
+        return bcrypt.compareSync(password, encryptPassword)
     }
 }
 module.exports = comparePassword

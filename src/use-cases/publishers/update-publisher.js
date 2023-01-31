@@ -7,9 +7,7 @@ const updatePublisher = ({ publisherDB, updatePublisher_Entity }) => {
         let entity = await updatePublisher_Entity({ data })
 
         const res = await publisherDB.updatePublisher({
-            firstname: entity.getPublisherFirstname(),
-            middlename: entity.getPublisherMiddlename(),
-            lastname: entity.getPublisherLastname(),
+            publisher_name: entity.getPublisherPublisher_name(),
             location: entity.getLocation(),
             id: entity.getID(),
         })

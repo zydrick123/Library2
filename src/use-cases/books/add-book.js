@@ -4,36 +4,38 @@ const createBook = ({ bookDB, registerBook_Entity }) => {
         let entity = await registerBook_Entity({ data })
 
         const isExistings = await bookDB.isExisting({
-            Title: entity.getTitle()
+            title: entity.gettitle()
 
         })
         // console.log(isExistings)
         if (isExistings.length > 0) {
             throw new Error('Book exist')
         }
-        const checkAuthorID = await bookDB.checkAuthorID({
-            AuthorID: entity.getAuthorID()
+        const checkc_category_id = await bookDB.checkc_category_id({
+            c_category_id: entity.getc_category_id()
         })
-        if (checkAuthorID.length === 0) {
-            throw new Error('Book Author Does not Exist')
+        if (checkc_category_id.length === 0) {
+            throw new Error('Book Category Does not Exist')
         }
-        const checkPublisherID = await bookDB.checkPublisherID({
-            PublisherID: entity.getPublisherID()
+        const checkp_publisher_id = await bookDB.checkp_publisher_id({
+            p_publisher_id: entity.getp_publisher_id()
         })
-        if (checkPublisherID.length === 0) {
+        if (checkp_publisher_id.length === 0) {
             throw new Error('Book Publisher Does not Exist')
         }
 
 
 
         const res = await bookDB.createBook({
-            ISBN: entity.getISBN(),
-            Title: entity.getTitle(),
-            YearPublish: entity.getYearPublish(),
-            AuthorID: entity.getAuthorID(),
-            PageNo: entity.getPageNo(),
-
-            PublisherID: entity.getPublisherID(),
+            isbn: entity.getisbn(),
+            title: entity.gettitle(),
+            publication_year: entity.getpublication_year(),
+            author: entity.getauthor(),
+            no_of_pages: entity.getno_of_pages(),
+            no_of_copies: entity.getno_of_copies(),
+            shelf: entity.getshelf(),
+            p_publisher_id: entity.getp_publisher_id(),
+            c_category_id: entity.getc_category_id(),
 
         })
 
@@ -41,18 +43,18 @@ const createBook = ({ bookDB, registerBook_Entity }) => {
         if (res) {
             return {
                 message: 'Book registered succesfully',
-                ISBN: res[0].ISBN,
-                Title: res[0].Title,
-                YearPublish: res[0].YearPublish,
-                AuthorID: res[0].AuthorID,
-                PageNo: res[0].PageNo,
-
-                PublisherID: res[0].PublisherID,
-
+                isbn: res[0].isbn,
+                title: res[0].title,
+                publication_year: res[0].publication_year,
+                author: res[0].author,
+                no_of_pages: res[0].no_of_pages,
+                no_of_copies: res[0].no_of_copies,
+                shelf: res[0].shelf,
+                p_publisher_id: res[0].p_publisher_id,
+                c_category_id: res[0].c_category_id,
 
             }
         }
-        // throw new Error('failed')
 
     }
 }

@@ -6,23 +6,20 @@ const getAllReader = ({ readerDB }) => {
         const result = await readerDB.getAllReader({})  //fetch data from database
         for (let data of result.rows) {
             const dataValue = {}
-            dataValue.ReaderID = data.ReaderID
-            dataValue.ReaderNo = data.ReaderNo
-            dataValue.Firstname = data.Firstname
-            dataValue.Lastname = data.Lastname
-            dataValue.Birthdate = data.Birthdate
-            dataValue.Gender = data.Gender
-            dataValue.RegisterDate = data.RegisterDate
-            dataValue.ContactNo = data.ContactNo
-            dataValue.Status = data.Status
-            dataValue.City = data.City
-            dataValue.LibrarianID = data.LibrarianID
+            dataValue.reader_id = data.reader_id
+            dataValue.u_user_id = data.u_user_id
+            dataValue.u_first_name = data.u_first_name
+            dataValue.u_last_name = data.u_last_name
+            dataValue.date_of_birth = data.date_of_birth
+            dataValue.city = data.city
+
+
 
 
 
             readerList.push(dataValue)
         }
-        console.log("use case triggered", readerList)
+
         return readerList
     }
 

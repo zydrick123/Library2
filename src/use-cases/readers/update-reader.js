@@ -1,30 +1,24 @@
 const updateReader = ({ readerDB, updateReader_Entity }) => {
     return async function patch(data) {
         const { id } = data
-        const checkLibrarianID = await readerDB.checkLibrarianID({
-            LibrarianID: entity.getLibrarianID(),
+        let entity = await updateReader_Entity({ data })
+        const checku_user_id = await readerDB.checku_user_id({
+            u_user_id: entity.getu_user_id(),
 
         })
-        if (checkLibrarianID.length === 0) {
-            throw new Error('LibrarianID does not exist')
+        if (checku_user_id.length === 0) {
+            throw new Error('User ID does not exist')
         }
         let prevData = await readerDB.getReader({ id })
         // console.log(prevData)
         if (prevData.length === 0) { throw new Error('no id found') }
-        let entity = await updateReader_Entity({ data })
 
         const res = await readerDB.updateReader({
-            ReaderNo: entity.getReaderNo(),
-            Firstname: entity.getFirstname(),
-            Lastname: entity.getLastname(),
-            Birthdate: entity.getBirthdate(),
-            Gender: entity.getGender(),
-            RegisterDate: entity.getRegisterDate(),
-            ContactNo: entity.getContactNo(),
-            Status: entity.getStatus(),
-            City: entity.getCity(),
-            LibrarianID: entity.getLibrarianID(),
-
+            u_user_id: entity.getu_user_id(),
+            u_first_name: entity.getu_first_name(),
+            u_last_name: entity.getu_last_name(),
+            date_of_birth: entity.getdate_of_birth(),
+            city: entity.getcity(),
             id: entity.getID(),
 
         })

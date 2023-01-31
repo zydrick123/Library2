@@ -6,20 +6,22 @@ const getAllBook = ({ bookDB }) => {
         for (let data of result.rows) {
 
             const dataValue = {}
-            dataValue.bookID = data.bookID
-            dataValue.ISBN = data.ISBN
-            dataValue.Title = data.Title
-            dataValue.YearPublish = data.YearPublish
-            dataValue.AuthorID = data.AuthorID
-            dataValue.PageNo = data.PageNo
-            dataValue.PublisherID = data.PublisherID
+            dataValue.isbn = data.isbn
+            dataValue.title = data.title
+            dataValue.author = data.author
+            dataValue.publication_year = data.publication_year
+            dataValue.no_of_pages = data.no_of_pages
+            dataValue.no_of_copies = data.no_of_copies
+            dataValue.shelf = data.shelf
+            dataValue.p_publisher_id = data.p_publisher_id
+            dataValue.c_category_id = data.c_category_id
 
 
             bookList.push(dataValue)
 
         }
 
-        console.log('use-cases triggered', bookList)
+
 
         return bookList
     }

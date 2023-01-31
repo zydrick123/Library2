@@ -1,50 +1,32 @@
 const makeReader = ({ data }) => {
 
-    const { ReaderNo, Firstname, Lastname, Birthdate, Gender, RegisterDate, ContactNo, Status, City, LibrarianID } = data;
-    if (!ReaderNo) {
-        throw new Error('Please enter ReaderNo')
+    const { u_user_id, u_first_name, u_last_name, date_of_birth, city } = data;
+    if (!u_user_id) {
+        throw new Error('Please enter u_user_id')
     }
-    if (!Firstname) {
-        throw new Error('Please enter Firstname')
+    if (!u_first_name) {
+        throw new Error('Please enter u_first_name')
     }
-    if (!Lastname) {
-        throw new Error('Please enter Lastname')
+    if (!u_last_name) {
+        throw new Error('Please enter u_last_name')
     }
-    if (!Birthdate) {
-        throw new Error('Please enter Birthdate')
+    if (!date_of_birth) {
+        throw new Error('Please enter date_of_birth')
     }
-    if (!Gender) {
-        throw new Error('Please enter Gender')
+
+    if (!city) {
+        throw new Error('Please enter city')
     }
-    if (!RegisterDate) {
-        throw new Error('Please enter RegisterDate')
-    }
-    if (!ContactNo) {
-        throw new Error('Please enter ContactNo')
-    }
-    if (!Status) {
-        throw new Error('Please enter Status')
-    }
-    if (!City) {
-        throw new Error('Please enter City')
-    }
-    if (!LibrarianID) {
-        throw new Error('Please enter LibrarianID')
-    }
+
 
 
 
     return Object.freeze({
-        getReaderNo: () => ReaderNo,
-        getFirstname: () => Firstname,
-        getLastname: () => Lastname,
-        getBirthdate: () => Birthdate,
-        getGender: () => Gender,
-        getRegisterDate: () => RegisterDate,
-        getContactNo: () => ContactNo,
-        getStatus: () => Status,
-        getCity: () => City,
-        getLibrarianID: () => LibrarianID,
+        getu_user_id: () => u_user_id,
+        getu_first_name: () => u_first_name,
+        getu_last_name: () => u_last_name,
+        getdate_of_birth: () => date_of_birth,
+        getcity: () => city,
 
 
     })

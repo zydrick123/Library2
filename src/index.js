@@ -7,16 +7,17 @@ const { configureJWTStrat } = require('./helpers/passport/passport-jwt')
 //Route imports
 const { librarianRoute } = require('./routes/librarian/index')
 const { bookRoute } = require('./routes/book/index')
-const { authorRoute } = require('./routes/author/index')
-const { shelfRoute } = require('./routes/shelf/index')
+
+const { requestRoute } = require('./routes/request/index')
+
 const { publisherRoute } = require('./routes/publisher/index')
-const { bookSubCatRoute } = require('./routes/book-subcategory/index')
-const { bookCatRoute } = require('./routes/book-category/index')
-const { cityRoute } = require('./routes/city/index')
-const { accountRoute } = require('./routes/account/index')
-const { bookCopyRoute } = require('./routes/bookcopy/index')
+
+const { categoryRoute } = require('./routes/category/index')
+
+const { userRoute } = require('./routes/user/index')
+
 const { readerRoute } = require('./routes/reader/index')
-const { borrowerRoute } = require('./routes/borrower/index')
+const { issued_BookRoute } = require('./routes/issued_book/index')
 const port = 5000; //
 
 //Initialize app
@@ -30,20 +31,17 @@ app.use(passport.initialize());
 configureJWTStrat();
 
 const server = app.listen(port, () => {
-    console.log("Server running")
+    console.log("Server running at port " + port);
 });
 
 //initialize routes
 app.use('/', librarianRoute)
     .use('/', bookRoute)
-    .use('/', authorRoute)
-    .use('/', shelfRoute)
     .use('/', publisherRoute)
-    .use('/', bookSubCatRoute)
-    .use('/', bookCatRoute)
-    .use('/', cityRoute)
-    .use('/', accountRoute)
-    .use('/', bookCopyRoute)
+    .use('/', categoryRoute)
+
+    .use('/', userRoute)
     .use('/', readerRoute)
-    .use('/', borrowerRoute)
+    .use('/', issued_BookRoute)
+    .use('/', requestRoute)
 module.exports = { app }

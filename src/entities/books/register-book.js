@@ -1,35 +1,47 @@
 const makeBook = ({ data }) => {
 
-    const { ISBN, Title, YearPublish, AuthorID, PageNo, PublisherID } = data;
-    if (!ISBN) {
-        throw new Error('Please enter ISBN')
+    const { isbn, title, author, publication_year, no_of_pages, no_of_copies, shelf, p_publisher_id, c_category_id } = data;
+    if (!isbn) {
+        throw new Error('Please enter isbn')
     }
-    if (!Title) {
-        throw new Error('Please enter Title')
+    if (!title) {
+        throw new Error('Please enter title')
     }
-    if (!YearPublish) {
-        throw new Error('Please enter YearPublish')
+    if (!author) {
+        throw new Error('Please enter Author')
     }
-    if (!AuthorID) {
-        throw new Error('Please enter AuthorID')
+    if (!publication_year) {
+        throw new Error('Please enter publication_year')
     }
-    if (!PageNo) {
-        throw new Error('Please enter PageNo')
+    if (!no_of_pages) {
+        throw new Error('Please enter no_of_pages')
     }
 
-    if (!PublisherID) {
-        throw new Error('Please enter PublisherID')
+    if (!no_of_copies) {
+        throw new Error('Please enter no_of_copies')
+    }
+    if (!shelf) {
+        throw new Error('Please enter shelf')
+    }
+    if (!p_publisher_id) {
+        throw new Error('Please enter p_publisher_id')
+    }
+    if (!c_category_id) {
+        throw new Error('Please enter c_category_id')
     }
 
 
 
     return Object.freeze({
-        getISBN: () => ISBN,
-        getTitle: () => Title,
-        getYearPublish: () => YearPublish,
-        getAuthorID: () => AuthorID,
-        getPageNo: () => PageNo,
-        getPublisherID: () => PublisherID,
+        getisbn: () => isbn,
+        gettitle: () => title,
+        getauthor: () => author,
+        getpublication_year: () => publication_year,
+        getno_of_pages: () => no_of_pages,
+        getno_of_copies: () => no_of_copies,
+        getshelf: () => shelf,
+        getp_publisher_id: () => p_publisher_id,
+        getc_category_id: () => c_category_id,
 
     })
 }

@@ -1,7 +1,7 @@
 const Passport = require('passport')
 const PassportJWT = require('passport-jwt')
 const SECRET_KEY = require('../../config/config')
-const accountDB = require('../../data-access/accounts/index')
+const userDB = require('../../data-access/users/index')
 
 
 const configureJWTStrat = () => {
@@ -12,7 +12,7 @@ const configureJWTStrat = () => {
     Passport.use(new PassportJWT.Strategy(opts, async (payload, done) => {
         const { Username } = payload
         try {
-            const verfied = await accountDB.isExisting({ Username: Username })
+            const verfied = await userDB.isExisting({ Username: Username })
 
             if (!verfied) {
                 return done(null, false)

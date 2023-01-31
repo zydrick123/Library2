@@ -5,16 +5,15 @@ const bookQuery = ({ conn }) => {
         isExisting,
         updateBook,
         getBook,
-        checkAuthorID,
-        checkPublisherID,
-
+        checkp_publisher_id,
+        checkc_category_id
 
     })
     async function getAllBook({ }) {
         try {
 
             const connect = await conn()
-            let sql = 'SELECT * FROM books'
+            let sql = 'SELECT * FROM "Books"'
             const response = await connect.query(sql)
             return response
         } catch (error) {
@@ -22,24 +21,24 @@ const bookQuery = ({ conn }) => {
         }
 
     }
-    async function createBook({ ISBN, Title, YearPublish, AuthorID, PageNo, PublisherID }) {
+    async function createBook({ isbn, title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id }) {
         try {
             const connect = await conn()
 
-            let params = [ISBN, Title, YearPublish, AuthorID, PageNo, PublisherID]
-            let sql = 'INSERT INTO books ( "ISBN","Title","YearPublish","AuthorID","PageNo","PublisherID") VALUES ($1,$2,$3,$4,$5,$6) returning *'
+            let params = [isbn, title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id]
+            let sql = 'INSERT INTO "Books" ( "isbn","title","publication_year","author","no_of_pages","p_publisher_id", "no_of_copies","shelf","c_category_id" ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {
             console.log('Error: ', error)
         }
     }
-    async function isExisting({ Title }) {
+    async function isExisting({ title }) {
         try {
             const connect = await conn()
             //  const { firstname, lastname } = data
-            let params = [Title]
-            let sql = 'SELECT * FROM books WHERE "Title" =$1'
+            let params = [title]
+            let sql = 'SELECT * FROM "Books" WHERE "title" =$1'
             const response = await connect.query(sql, params)
             return response.rows
 
@@ -47,11 +46,11 @@ const bookQuery = ({ conn }) => {
             console.log('Error: ', error)
         }
     }
-    async function updateBook({ ISBN, Title, YearPublish, AuthorID, PageNo, PublisherID, id }) {
+    async function updateBook({ title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id, id }) {
         try {
             const connect = await conn()
-            let params = [ISBN, Title, YearPublish, AuthorID, PageNo, PublisherID, id]
-            const sql = 'UPDATE books SET "ISBN"= $1, "Title"= $2, "YearPublish"= $3, "AuthorID" = $4, "PageNo" = $5, "PublisherID" = $6 WHERE "bookID" = $7 returning *'
+            let params = [title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id, id]
+            const sql = 'UPDATE "Books" SET  "title"= $1, "publication_year"= $2, "author" = $3, "no_of_pages" = $4, "p_publisher_id" = $5 , "no_of_copies" = $6,"shelf" = $7, "c_category_id" = $8 WHERE "isbn"= $9 returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {
@@ -61,7 +60,7 @@ const bookQuery = ({ conn }) => {
     async function getBook({ id }) {
         try {
             const connect = await conn()
-            let sql = 'SELECT * FROM books WHERE "bookID" = $1'
+            let sql = 'SELECT * FROM "Books" WHERE "isbn" = $1'
             let params = [id]
             const response = await connect.query(sql, params)
             return response.rows
@@ -70,22 +69,22 @@ const bookQuery = ({ conn }) => {
         }
     }
 
-    async function checkAuthorID({ AuthorID }) {
+    async function checkp_publisher_id({ p_publisher_id }) {
         try {
             const connect = await conn()
-            let params = [AuthorID]
-            const sql = 'SELECT * FROM books WHERE EXISTS (SELECT * FROM authors WHERE "AuthorID" = $1)'
+            let params = [p_publisher_id]
+            const sql = 'SELECT * FROM "Publishers" WHERE "publisher_id" = $1'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {
             console.log("Error2: ", error);
         }
     }
-    async function checkPublisherID({ PublisherID }) {
+    async function checkc_category_id({ c_category_id }) {
         try {
             const connect = await conn()
-            let params = [PublisherID]
-            const sql = 'SELECT * FROM books WHERE EXISTS (SELECT * FROM publishers WHERE "publisherID" = $1)'
+            let params = [c_category_id]
+            const sql = 'SELECT * FROM "Categories" WHERE "category_id" = $1'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {
@@ -93,16 +92,5 @@ const bookQuery = ({ conn }) => {
         }
     }
 
-    // async function removeBook({ id }) {
-    //     try {
-    //         const connect = await conn()
-    //         const sql = 'DELETE FROM books WHERE "BookID" = $1'
-    //         let params = [id]
-    //         const response = await connect.query(sql, params)
-    //         return response
-    //     } catch (error) {
-    //         console.log("Error: ", error);
-    //     }
-    // }
 }
 module.exports = bookQuery

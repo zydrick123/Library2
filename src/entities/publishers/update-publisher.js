@@ -1,13 +1,11 @@
 const updatePublisher = ({ data }) => {
-    const { firstname, middlename, lastname, location, id } = data;
+    const { publisher_name, location, id } = data;
 
 
-    if (!firstname) {
-        throw new Error('Please enter firstname')
+    if (!publisher_name) {
+        throw new Error('Please enter publisher_name')
     }
-    if (!lastname) {
-        throw new Error('Please enter lastname')
-    }
+
     if (!location) {
         throw new Error('Please enter location')
     }
@@ -20,9 +18,7 @@ const updatePublisher = ({ data }) => {
 
 
     return Object.freeze({
-        getPublisherFirstname: () => firstname,
-        getPublisherMiddlename: () => middlename,
-        getPublisherLastname: () => lastname,
+        getPublisherPublisher_name: () => publisher_name,
         getLocation: () => location,
         getID: () => id
     })

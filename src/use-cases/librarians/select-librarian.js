@@ -10,12 +10,11 @@ const selectLibrarian = ({ librarianDB }) => {
         console.log(res.rows)
 
         return {
-            UserID: res.rows[0].UserID,
-            Firstname: res.rows[0].Firstname,
-            Middlename: res.rows[0].Middlename,
-            Lastname: res.rows[0].Lastname,
-            Gender: res.rows[0].Gender,
-            RegisterDate: res.rows[0].RegisterDate,
+            librarian_id: res.rows[0].librarian_id,
+            first_name: res.rows[0].first_name,
+            last_name: res.rows[0].last_name,
+
+            u_user_id: res.rows[0].u_user_id,
 
         }
 
