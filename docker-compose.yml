@@ -1,11 +1,23 @@
 version: "3"
 
 services:
-  library-service_v2:
-    restart: always
-    build: .
-    image: library_v2
+  library-api:
+    restart: unless-stopped
+    image: library-api-image
+    container_name: library-api
+    build:
+      context: ./library
+      dockerfile: Dockerfile
+
     ports:
-      - "5002:5002"
-    volumes:
-      - ./vol:/node_modules
+      - "5000:5000"
+
+  library-app:
+    image: library-app
+    container_name: library-app
+    build:
+      context: ./library-app
+      dockerfile: Dockerfile
+
+    ports:
+      - "5001:80"

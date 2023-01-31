@@ -1,4 +1,4 @@
-const issued_BookDB = require('../../data-access/issued_Books/index')
+const issued_BookDB = require('../../data-access/issued_books/index')
 
 const { registerIssued_Books_Entity, updateIssued_Books_Entity } = require('../../entities/issued_books/index')
 
