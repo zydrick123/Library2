@@ -7,6 +7,6 @@ RUN  npm config set proxy http://172.16.1.6:3128 && npm install
 # RUN npm install
 COPY . .
 
-EXPOSE 5000
+EXPOSE 5002
 
 CMD ["npm","start"]

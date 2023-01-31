@@ -1,11 +1,11 @@
 version: "3"
 
 services:
-  library-service:
+  library-service_v2:
     restart: always
     build: .
-    image: node-docker
+    image: library_v2
     ports:
-      - "5000:5000"
+      - "5002:5002"
     volumes:
       - ./vol:/node_modules
