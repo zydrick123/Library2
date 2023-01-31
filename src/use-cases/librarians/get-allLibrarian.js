@@ -12,6 +12,8 @@ const getAllLibrarian = ({ librarianDB }) => {
             dataValue.first_name = data.first_name
             dataValue.last_name = data.last_name
             dataValue.u_user_id = data.u_user_id
+            dataValue.username = data.username
+            dataValue.password = data.password
 
 
 

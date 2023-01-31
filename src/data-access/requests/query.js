@@ -19,7 +19,7 @@ const RequestQuery = ({ conn }) => {
         try {
             const connection = await conn() //connection
             const response = await new Promise((resolve) => {
-                let sql = 'SELECT * FROM "Requests" ORDER BY "request_id" DESC'
+                let sql = 'SELECT * FROM "Requests" inner join "Books" on "Requests".b_isbn = "Books".isbn inner join "Readers" on "Requests".r_reader_id = "Readers".reader_id'
                 connection.query(sql, (err, res) => {
                     connection.end()
                     if (err) resolve(err)

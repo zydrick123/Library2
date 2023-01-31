@@ -63,7 +63,7 @@ const userQuery = ({ conn, encryptPasswordService, comparePasswordService }) => 
     async function getUser({ id }) {
         try {
             const connect = await conn()
-            let sql = 'SELECT * FROM "Users" WHERE "user_id" = $1'
+            let sql = 'SELECT * FROM "Users" WHERE "user_id" = $1 '
             let params = [id]
             const response = await connect.query(sql, params)
             return response.rows

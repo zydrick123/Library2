@@ -8,6 +8,8 @@ const getAllReader = ({ readerDB }) => {
             const dataValue = {}
             dataValue.reader_id = data.reader_id
             dataValue.u_user_id = data.u_user_id
+            dataValue.username = data.username
+            dataValue.password = data.password
             dataValue.u_first_name = data.u_first_name
             dataValue.u_last_name = data.u_last_name
             dataValue.date_of_birth = data.date_of_birth

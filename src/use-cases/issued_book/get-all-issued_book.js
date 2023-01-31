@@ -7,13 +7,19 @@ const getAllIssued_Book = ({ issued_BookDB }) => {
 
             const dataValue = {}
             dataValue.issue_id = data.issue_id
-            dataValue.b_isbn = data.b_isbn
-            dataValue.l_librarian_id = data.l_librarian_id
-            dataValue.r_reader_id = data.r_reader_id
+
             dataValue.return_date = data.return_date
             dataValue.date_returned = data.date_returned
             dataValue.date_issued = data.date_issued
             dataValue.status = data.status
+            dataValue.b_isbn = data.b_isbn
+            dataValue.title = data.title
+            dataValue.r_reader_id = data.r_reader_id
+            dataValue.u_first_name = data.u_first_name
+            dataValue.u_last_name = data.u_last_name
+            dataValue.l_librarian_id = data.l_librarian_id
+            dataValue.first_name = data.first_name
+            dataValue.last_name = data.last_name
 
 
             issued_BookList.push(dataValue)

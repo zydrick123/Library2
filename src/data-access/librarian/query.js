@@ -17,7 +17,7 @@ const librarianQuery = ({ conn }) => {
     async function getAllLibrarian({ }) {
         try {
             const connection = await conn() //connection
-            let sql = 'SELECT * FROM "Librarians"'
+            let sql = 'SELECT *FROM "Librarians" INNER JOIN "Users" ON "Librarians".u_user_id = "Users".user_id'
             const response = await connection.query(sql)
             return response
 

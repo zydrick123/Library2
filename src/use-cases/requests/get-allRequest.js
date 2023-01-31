@@ -7,10 +7,12 @@ const getAllRequest = ({ requestDB }) => {
         for (let data of result.rows) {
             const dataValue = {}
             dataValue.request_id = data.request_id
-            dataValue.r_reader_id = data.r_reader_id
-            dataValue.b_isbn = data.b_isbn
             dataValue.date_requested = data.date_requested
-
+            dataValue.r_reader_id = data.r_reader_id
+            dataValue.u_first_name = data.u_first_name
+            dataValue.u_last_name = data.u_last_name
+            dataValue.b_isbn = data.b_isbn
+            dataValue.title = data.title
 
 
             requestList.push(dataValue)
