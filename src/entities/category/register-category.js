@@ -5,7 +5,7 @@ const makeCategory = ({ data }) => {
         throw new Error('Please enter Book category name')
     }
     if (!subcategories) {
-        throw new Error('Please enter Book sub category id')
+        throw new Error('Please enter Book subcategory')
     }
 
 
