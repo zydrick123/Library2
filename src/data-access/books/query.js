@@ -26,8 +26,8 @@ const bookQuery = ({ conn }) => {
         try {
             const connect = await conn()
 
-            let params = [isbn, title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id, description]
-            let sql = 'INSERT INTO "Books" ( "isbn","title","publication_year","author","no_of_pages","p_publisher_id", "no_of_copies","shelf","c_category_id" ,"description") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) returning *'
+            let params = [isbn, title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id, description, "active"]
+            let sql = 'INSERT INTO "Books" ( "isbn","title","publication_year","author","no_of_pages","p_publisher_id", "no_of_copies","shelf","c_category_id" ,"description","status") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {

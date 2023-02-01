@@ -19,7 +19,7 @@ const getAllBook = ({ bookDB }) => {
             dataValue.category_name = data.category_name
             dataValue.subcategories = data.subcategories
             dataValue.description = data.description
-
+            dataValue.status = data.status
             bookList.push(dataValue)
 
         }
