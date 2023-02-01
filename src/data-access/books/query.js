@@ -51,8 +51,8 @@ const bookQuery = ({ conn }) => {
     async function updateBook({ title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id, description, id }) {
         try {
             const connect = await conn()
-            let params = [title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id, description, id]
-            const sql = 'UPDATE "Books" SET  "title"= $1, "publication_year"= $2, "author" = $3, "no_of_pages" = $4, "p_publisher_id" = $5 , "no_of_copies" = $6,"shelf" = $7, "c_category_id" = $8 ,"description" = $9 WHERE "isbn"= $10 returning *'
+            let params = [title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id, description, id, "active"]
+            const sql = 'UPDATE "Books" SET  "title"= $1, "publication_year"= $2, "author" = $3, "no_of_pages" = $4, "p_publisher_id" = $5 , "no_of_copies" = $6,"shelf" = $7, "c_category_id" = $8 ,"description" = $9 , "status" = $11 WHERE "isbn"= $10 returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {
