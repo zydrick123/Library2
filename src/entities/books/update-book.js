@@ -1,5 +1,5 @@
 const updateBook = ({ data }) => {
-    const { title, author, publication_year, no_of_pages, no_of_copies, shelf, p_publisher_id, c_category_id, id } = data;
+    const { title, author, publication_year, no_of_pages, no_of_copies, shelf, p_publisher_id, c_category_id, description, id } = data;
 
     if (!title) {
         throw new Error('Please enter title')
@@ -26,6 +26,10 @@ const updateBook = ({ data }) => {
     if (!c_category_id) {
         throw new Error('Please enter c_category_id')
     }
+    if (!description) {
+        throw new Error('Please enter description')
+    }
+
     if (!id) {
 
         throw new Error('Request error ID not found')
@@ -42,6 +46,7 @@ const updateBook = ({ data }) => {
         getshelf: () => shelf,
         getp_publisher_id: () => p_publisher_id,
         getc_category_id: () => c_category_id,
+        getdescription: () => description,
         getID: () => id
 
     })

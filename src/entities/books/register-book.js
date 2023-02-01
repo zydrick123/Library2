@@ -1,6 +1,6 @@
 const makeBook = ({ data }) => {
 
-    const { isbn, title, author, publication_year, no_of_pages, no_of_copies, shelf, p_publisher_id, c_category_id } = data;
+    const { isbn, title, author, publication_year, no_of_pages, no_of_copies, shelf, p_publisher_id, c_category_id, description } = data;
     if (!isbn) {
         throw new Error('Please enter isbn')
     }
@@ -29,6 +29,9 @@ const makeBook = ({ data }) => {
     if (!c_category_id) {
         throw new Error('Please enter c_category_id')
     }
+    if (!description) {
+        throw new Error('Please enter description')
+    }
 
 
 
@@ -42,6 +45,7 @@ const makeBook = ({ data }) => {
         getshelf: () => shelf,
         getp_publisher_id: () => p_publisher_id,
         getc_category_id: () => c_category_id,
+        getdescription: () => description,
 
     })
 }

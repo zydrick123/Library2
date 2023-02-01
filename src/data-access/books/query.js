@@ -14,7 +14,7 @@ const bookQuery = ({ conn }) => {
 
             const connect = await conn()
             // let sql = 'SELECT * FROM "Books" INNER JOIN "Publishers" on "Books".p_publisher_id = "Publishers".publisher_id inner join "Categories" on "Books".c_category_id = "Categories".category_id'
-          let sql = 'SELECT * FROM "Books" INNER JOIN "Publishers" on "Books".p_publisher_id = "Publishers".publisher_id inner join "Categories" on "Books".c_category_id = "Categories".category_id'
+            let sql = 'SELECT * FROM "Books" INNER JOIN "Publishers" on "Books".p_publisher_id = "Publishers".publisher_id inner join "Categories" on "Books".c_category_id = "Categories".category_id'
             const response = await connect.query(sql)
             return response
         } catch (error) {
@@ -22,12 +22,12 @@ const bookQuery = ({ conn }) => {
         }
 
     }
-    async function createBook({ isbn, title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id }) {
+    async function createBook({ isbn, title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id, description }) {
         try {
             const connect = await conn()
 
-            let params = [isbn, title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id]
-            let sql = 'INSERT INTO "Books" ( "isbn","title","publication_year","author","no_of_pages","p_publisher_id", "no_of_copies","shelf","c_category_id" ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) returning *'
+            let params = [isbn, title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id, description]
+            let sql = 'INSERT INTO "Books" ( "isbn","title","publication_year","author","no_of_pages","p_publisher_id", "no_of_copies","shelf","c_category_id" ,"description") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {
@@ -47,11 +47,11 @@ const bookQuery = ({ conn }) => {
             console.log('Error: ', error)
         }
     }
-    async function updateBook({ title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id, id }) {
+    async function updateBook({ title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id, description, id }) {
         try {
             const connect = await conn()
-            let params = [title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id, id]
-            const sql = 'UPDATE "Books" SET  "title"= $1, "publication_year"= $2, "author" = $3, "no_of_pages" = $4, "p_publisher_id" = $5 , "no_of_copies" = $6,"shelf" = $7, "c_category_id" = $8 WHERE "isbn"= $9 returning *'
+            let params = [title, publication_year, author, no_of_pages, p_publisher_id, no_of_copies, shelf, c_category_id, description, id]
+            const sql = 'UPDATE "Books" SET  "title"= $1, "publication_year"= $2, "author" = $3, "no_of_pages" = $4, "p_publisher_id" = $5 , "no_of_copies" = $6,"shelf" = $7, "c_category_id" = $8 ,"description" = $9 WHERE "isbn"= $10 returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {

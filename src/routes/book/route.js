@@ -2,7 +2,7 @@ const { getAllBooksController, addBookController, updateBookController } = requi
 const passport = require('passport')
 
 const bookRoutes = ({ bookRouter, makeExpressCallback }) => {
-    bookRouter.get('/api/books', passport.authenticate('jwt', { session: false }), makeExpressCallback(getAllBooksController))
+    bookRouter.get('/api/books', makeExpressCallback(getAllBooksController))
         .post('/api/books', passport.authenticate('jwt', { session: false }), makeExpressCallback(addBookController))
         .patch('/api/books/:id', passport.authenticate('jwt', { session: false }), makeExpressCallback(updateBookController))
     return bookRouter

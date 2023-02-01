@@ -18,7 +18,7 @@ const getAllBook = ({ bookDB }) => {
             dataValue.c_category_id = data.c_category_id
             dataValue.category_name = data.category_name
             dataValue.subcategories = data.subcategories
-
+            dataValue.description = data.description
 
             bookList.push(dataValue)
 

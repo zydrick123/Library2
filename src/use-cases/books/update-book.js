@@ -17,6 +17,7 @@ const updateBook = ({ bookDB, updateBook_Entity }) => {
             shelf: entity.getshelf(),
             p_publisher_id: entity.getp_publisher_id(),
             c_category_id: entity.getc_category_id(),
+            description: entity.getdescription(),
 
             id: entity.getID(),
         })
