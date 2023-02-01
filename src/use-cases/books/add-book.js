@@ -36,6 +36,7 @@ const createBook = ({ bookDB, registerBook_Entity }) => {
             shelf: entity.getshelf(),
             p_publisher_id: entity.getp_publisher_id(),
             c_category_id: entity.getc_category_id(),
+            description: entity.getdescription()
 
         })
 
@@ -52,6 +53,7 @@ const createBook = ({ bookDB, registerBook_Entity }) => {
                 shelf: res[0].shelf,
                 p_publisher_id: res[0].p_publisher_id,
                 c_category_id: res[0].c_category_id,
+                description: res[0].description
 
             }
         }
