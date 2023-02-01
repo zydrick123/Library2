@@ -6,7 +6,8 @@ const bookQuery = ({ conn }) => {
         updateBook,
         getBook,
         checkp_publisher_id,
-        checkc_category_id
+        checkc_category_id,
+        updatestatus
 
     })
     async function getAllBook({ }) {
@@ -86,6 +87,17 @@ const bookQuery = ({ conn }) => {
             const connect = await conn()
             let params = [c_category_id]
             const sql = 'SELECT * FROM "Categories" WHERE "category_id" = $1'
+            const response = await connect.query(sql, params)
+            return response.rows
+        } catch (error) {
+            console.log("Error2: ", error);
+        }
+    }
+    async function updatestatus({ status, id }) {
+        try {
+            const connect = await conn()
+            let params = ["inactive", id]
+            const sql = 'Update "Books" Set "status" = $1  where "isbn" = $2'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {

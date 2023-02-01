@@ -5,17 +5,19 @@ const { registerBook_Entity, updateBook_Entity } = require('../../entities/books
 const getAllBook = require('./get-all-book')
 const createBook = require('./add-book')
 const updateBook = require('./update-book')
+const updatestatus = require('./updatestatus')
 
 
 //initialize
 const getAllBooksUseCase = getAllBook({ bookDB })
+const updatestatusUseCase = updatestatus({ bookDB })
 const updateBookUseCase = updateBook({ bookDB, updateBook_Entity })
 const addBooksUseCase = createBook({ bookDB, registerBook_Entity })
 
 
 const services = Object.freeze({
-    getAllBooksUseCase, addBooksUseCase, updateBookUseCase
+    getAllBooksUseCase, addBooksUseCase, updateBookUseCase, updatestatusUseCase
 })
 
 
-module.exports = services, { getAllBooksUseCase, addBooksUseCase, updateBookUseCase }
+module.exports = services, { getAllBooksUseCase, addBooksUseCase, updateBookUseCase, updatestatusUseCase }
