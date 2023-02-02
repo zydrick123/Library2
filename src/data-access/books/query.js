@@ -15,7 +15,7 @@ const bookQuery = ({ conn }) => {
 
             const connect = await conn()
             // let sql = 'SELECT * FROM "Books" INNER JOIN "Publishers" on "Books".p_publisher_id = "Publishers".publisher_id inner join "Categories" on "Books".c_category_id = "Categories".category_id'
-            let sql = 'SELECT * FROM "Books" INNER JOIN "Publishers" on "Books".p_publisher_id = "Publishers".publisher_id inner join "Categories" on "Books".c_category_id = "Categories".category_id'
+            let sql = 'SELECT * FROM "Books" INNER JOIN "Publishers" on "Books".p_publisher_id = "Publishers".publisher_id inner join "Categories" on "Books".c_category_id = "Categories".category_id order by "title" asc '
             const response = await connect.query(sql)
             return response
         } catch (error) {
