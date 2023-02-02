@@ -47,8 +47,8 @@ const categoryQuery = ({ conn }) => {
     async function updateCategory({ category_name, subcategories, id }) {
         try {
             const connect = await conn()
-            let params = [category_name, subcategories, id]
-            const sql = 'UPDATE "Categories" SET "category_name" = $1 ,"subcategories" = $2 WHERE "category_id" = $3 returning *'
+            let params = [category_name, subcategories, id, 'active']
+            const sql = 'UPDATE "Categories" SET "category_name" = $1 ,"subcategories" = $2 ,"c_status" = $4 WHERE "category_id" = $3 returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {

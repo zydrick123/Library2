@@ -48,8 +48,8 @@ const publisherQuery = ({ conn }) => {
     async function updatePublisher({ publisher_name, location, id }) {
         try {
             const connect = await conn()
-            let params = [publisher_name, location, id]
-            const sql = 'UPDATE "Publishers" SET "publisher_name" = $1, "location" = $2 WHERE "publisher_id" = $3 returning *'
+            let params = [publisher_name, location, id, 'active']
+            const sql = 'UPDATE "Publishers" SET "publisher_name" = $1, "location" = $2 ,"p_status" = $4 WHERE "publisher_id" = $3 returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {

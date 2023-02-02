@@ -144,8 +144,8 @@ const RequestQuery = ({ conn }) => {
         try {
             const connect = await conn()
 
-            let params = [r_reader_id, b_isbn, date_requested, id]
-            const sql = 'UPDATE "Requests" SET "r_reader_id" = $1,"b_isbn" = $2, "date_requested" = $3  WHERE "request_id" = $4 returning *'
+            let params = [r_reader_id, b_isbn, date_requested, id, 'active']
+            const sql = 'UPDATE "Requests" SET "r_reader_id" = $1,"b_isbn" = $2, "date_requested" = $3 ,"r_status"= $5 WHERE "request_id" = $4 returning *'
 
             const response = await connect.query(sql, params)
 
