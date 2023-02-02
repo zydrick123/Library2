@@ -6,10 +6,6 @@ const updateCategory = ({ data }) => {
         throw new Error('Please enter Book category name')
     }
 
-    if (!subcategories) {
-        throw new Error('Please enter Book subcategories')
-    }
-
 
     if (!id) {
 
