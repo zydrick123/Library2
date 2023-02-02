@@ -93,7 +93,7 @@ const bookQuery = ({ conn }) => {
             console.log("Error2: ", error);
         }
     }
-    async function updatestatus({ status, id }) {
+    async function updatestatus({ id }) {
         try {
             const connect = await conn()
             let params = ["inactive", id]

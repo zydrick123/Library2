@@ -5,6 +5,7 @@ const publisherQuery = ({ conn }) => {
         isExisting,
         updatePublisher,
         getPublisher,
+        updatestatus
 
     })
     async function getAllPublisher({ }) {
@@ -23,8 +24,8 @@ const publisherQuery = ({ conn }) => {
         try {
             const connect = await conn()
 
-            let params = [publisher_name, location]
-            let sql = 'INSERT INTO "Publishers" ( "publisher_name", "location") VALUES ($1,$2) returning *'
+            let params = [publisher_name, location, 'active']
+            let sql = 'INSERT INTO "Publishers" ( "publisher_name", "location","p_status") VALUES ($1,$2,$3) returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {
@@ -64,6 +65,17 @@ const publisherQuery = ({ conn }) => {
             return response.rows
         } catch (error) {
             console.log('Error1: ', error)
+        }
+    }
+    async function updatestatus({ id }) {
+        try {
+            const connect = await conn()
+            let params = ["inactive", id]
+            const sql = 'Update "Publishers" Set "p_status" = $1  where "publisher_id" = $2'
+            const response = await connect.query(sql, params)
+            return response.rows
+        } catch (error) {
+            console.log("Error2: ", error);
         }
     }
 

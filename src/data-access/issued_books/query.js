@@ -7,7 +7,7 @@ const issued_BooksQuery = ({ conn }) => {
         getIssued_Books,
         checkb_isbn,
         checkr_reader_id,
-
+        autoupdate
     })
     async function getAllIssued_Books({ }) {
         try {
@@ -22,13 +22,14 @@ const issued_BooksQuery = ({ conn }) => {
         }
 
     }
-    async function createIssued_Books({ b_isbn, l_librarian_id, r_reader_id, return_date, date_returned, date_issued, status }) {
+    async function createIssued_Books({ b_isbn, l_librarian_id, r_reader_id, return_date, date_returned, date_issued }) {
         try {
             const connect = await conn()
 
-            let params = [b_isbn, l_librarian_id, r_reader_id, return_date, date_returned, date_issued, status]
-            let sql = 'INSERT INTO "Issued_Books" ( "b_isbn", "l_librarian_id", "r_reader_id", "return_date",  "date_returned", "date_issued", "status" ) VALUES ($1,$2,$3,$4,$5,$6,$7) returning *'
+            let params = [b_isbn, l_librarian_id, r_reader_id, return_date, date_returned, date_issued]
+            let sql = 'INSERT INTO "Issued_Books" ( "b_isbn", "l_librarian_id", "r_reader_id", "return_date",  "date_returned", "date_issued" ) VALUES ($1,$2,$3,$4,$5,$6) returning *'
             const response = await connect.query(sql, params)
+
             return response.rows
         } catch (error) {
             console.log('Error: ', error)
@@ -91,7 +92,18 @@ const issued_BooksQuery = ({ conn }) => {
             console.log("Error2: ", error);
         }
     }
-
+    async function autoupdate({ issue_id }) {
+        try {
+            const connect = await conn()
+            let params = ['Overdue', issue_id]
+            const sql = 'Update "Issued_Books" Set "status" = $1 WHERE "issue_id" = $2'
+            const response = await connect.query(sql, params)
+            return response.rows
+        } catch (error) {
+            console.log("Error2: ", error);
+        }
+    }
 
 }
+
 module.exports = issued_BooksQuery

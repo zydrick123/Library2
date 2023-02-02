@@ -9,6 +9,7 @@ const getAllPublisher = ({ publisherDB }) => {
             dataValue.publisher_id = data.publisher_id
             dataValue.publisher_name = data.publisher_name
             dataValue.location = data.location
+            dataValue.p_status = data.p_status
 
 
             publisherList.push(dataValue)

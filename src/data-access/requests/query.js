@@ -10,7 +10,8 @@ const RequestQuery = ({ conn }) => {
         removeRequest,
         isExisting,
         checkr_reader_id,
-        checkb_isbn
+        checkb_isbn,
+        updatestatus
         // loginRequest
 
 
@@ -38,8 +39,8 @@ const RequestQuery = ({ conn }) => {
 
         try {
             const connection = await conn()
-            const params = [r_reader_id, b_isbn, date_requested]
-            let sql = 'INSERT INTO "Requests" ("r_reader_id", "b_isbn", "date_requested") VALUES ($1,$2,$3) returning *'
+            const params = [r_reader_id, b_isbn, date_requested, 'active']
+            let sql = 'INSERT INTO "Requests" ("r_reader_id", "b_isbn", "date_requested", "r_status") VALUES ($1,$2,$3,$4) returning *'
             const response = await connection.query(sql, params)
             return response.rows
         } catch (error) {
@@ -154,6 +155,16 @@ const RequestQuery = ({ conn }) => {
         }
 
     }
-
+    async function updatestatus({ id }) {
+        try {
+            const connect = await conn()
+            let params = ['inactive', id]
+            const sql = 'Update "Requests" Set "r_status" = $1  where "request_id" = $2'
+            const response = await connect.query(sql, params)
+            return response.rows
+        } catch (error) {
+            console.log("Error2: ", error);
+        }
+    }
 }
 module.exports = RequestQuery

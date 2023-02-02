@@ -13,6 +13,7 @@ const getAllRequest = ({ requestDB }) => {
             dataValue.u_last_name = data.u_last_name
             dataValue.b_isbn = data.b_isbn
             dataValue.title = data.title
+            dataValue.r_status = data.r_status
 
 
             requestList.push(dataValue)

@@ -9,6 +9,7 @@ const getAllCategory = ({ categoryDB }) => {
             dataValue.subcategories = data.subcategories
             dataValue.category_name = data.category_name
             dataValue.category_id = data.category_id
+            dataValue.c_status = data.c_status
 
 
 

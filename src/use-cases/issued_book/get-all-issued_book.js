@@ -1,7 +1,22 @@
+
+
 const getAllIssued_Book = ({ issued_BookDB }) => {
     return async function list() {
         let issued_BookList = []
+        // async function comparedate(d1, issue_id) {
+        //     let date1 = new Date(d1).getTime()
+        //     let datenow = Date.now()
+        //     let status 
+        //     if (date1 > datenow) {
+        //         const update = await issued_BookDB.autoupdate({ issue_id })
+        //         if (update === 0) {
+        //             throw new Error("Failed")
 
+        //         }
+        //         return st
+        //         console.log(datenow)
+        //     }
+        // }
         const result = await issued_BookDB.getAllIssued_Books({})
         for (let data of result.rows) {
 
@@ -11,6 +26,8 @@ const getAllIssued_Book = ({ issued_BookDB }) => {
             dataValue.return_date = data.return_date
             dataValue.date_returned = data.date_returned
             dataValue.date_issued = data.date_issued
+            // await comparedate({ d1: dataValue.return_date, issue_id: dataValue.issue_id })
+
             dataValue.status = data.status
             dataValue.b_isbn = data.b_isbn
             dataValue.title = data.title
