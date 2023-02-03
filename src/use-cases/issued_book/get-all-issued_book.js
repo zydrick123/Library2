@@ -43,9 +43,7 @@ const getAllIssued_Book = ({ issued_BookDB }) => {
             // dataValue.ib_status = data.ib_status
             dataValue.b_isbn = data.b_isbn
             dataValue.title = data.title
-            dataValue.r_reader_id = data.r_reader_id
-            dataValue.u_first_name = data.u_first_name
-            dataValue.u_last_name = data.u_last_name
+            dataValue.reader_name = data.reader_name
             dataValue.l_librarian_id = data.l_librarian_id
             dataValue.first_name = data.first_name
             dataValue.last_name = data.last_name

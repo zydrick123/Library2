@@ -1,11 +1,11 @@
 const updateIssued_Book = ({ data }) => {
-    const { b_isbn, l_librarian_id, r_reader_id, return_date, date_returned, date_issued, status, id } = data;
+    const { b_isbn, l_librarian_id, reader_name, return_date, date_returned, date_issued, status, id } = data;
     if (!b_isbn) {
         throw new Error('Please enter b_isbn')
     }
 
-    if (!r_reader_id) {
-        throw new Error('Please enter r_reader_id')
+    if (!reader_name) {
+        throw new Error('Please enter reader_name')
     }
     if (!return_date) {
         throw new Error('Please enter return_date')
@@ -27,7 +27,7 @@ const updateIssued_Book = ({ data }) => {
     return Object.freeze({
         getb_isbn: () => b_isbn,
         getl_librarian_id: () => l_librarian_id,
-        getr_reader_id: () => r_reader_id,
+        getreader_name: () => reader_name,
         getreturn_date: () => return_date,
         getdate_returned: () => date_returned,
         getdate_issued: () => date_issued,

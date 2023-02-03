@@ -9,12 +9,12 @@ const updateIssued_Book = ({ issued_BookDB, updateIssued_Books_Entity }) => {
         const res = await issued_BookDB.updateIssued_Books({
             b_isbn: entity.getb_isbn(),
             l_librarian_id: entity.getl_librarian_id(),
-            r_reader_id: entity.getr_reader_id(),
+            reader_name: entity.getreader_name(),
             return_date: entity.getreturn_date(),
 
             date_returned: entity.getdate_returned(),
             date_issued: entity.getdate_issued(),
-            status: entity.getstatus(),
+            ib_status: entity.getstatus(),
             id: entity.getID(),
         })
         if (res === 0) { throw new Error('Failed to update Issued_Book') }

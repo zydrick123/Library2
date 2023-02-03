@@ -22,12 +22,12 @@ const issued_BooksQuery = ({ conn }) => {
         }
 
     }
-    async function createIssued_Books({ b_isbn, l_librarian_id, r_reader_id, return_date, date_returned, date_issued }) {
+    async function createIssued_Books({ b_isbn, l_librarian_id, reader_name, return_date, date_returned, date_issued }) {
         try {
             const connect = await conn()
 
-            let params = [b_isbn, l_librarian_id, r_reader_id, return_date, date_returned, date_issued]
-            let sql = 'INSERT INTO "Issued_Books" ( "b_isbn", "l_librarian_id", "r_reader_id", "return_date",  "date_returned", "date_issued" ) VALUES ($1,$2,$3,$4,$5,$6) returning *'
+            let params = [b_isbn, l_librarian_id, reader_name, return_date, date_returned, date_issued, 'active']
+            let sql = 'INSERT INTO "Issued_Books" ( "b_isbn", "l_librarian_id", "reader_name", "return_date",  "date_returned", "date_issued" ,"ib_status") VALUES ($1,$2,$3,$4,$5,$6,$7) returning *'
             const response = await connect.query(sql, params)
 
             return response.rows
@@ -36,11 +36,11 @@ const issued_BooksQuery = ({ conn }) => {
         }
     }
 
-    async function updateIssued_Books({ b_isbn, l_librarian_id, r_reader_id, return_date, date_returned, date_issued, status, id }) {
+    async function updateIssued_Books({ b_isbn, l_librarian_id, reader_name, return_date, date_returned, date_issued, status, id }) {
         try {
             const connect = await conn()
-            let params = [b_isbn, l_librarian_id, r_reader_id, return_date, date_returned, date_issued, status, id]
-            const sql = 'UPDATE "Issued_Books" SET "b_isbn"= $1, "l_librarian_id"= $2, "r_reader_id"= $3, "return_date" = $4,  "date_returned" = $5, "date_issued" = $6 ,"ib_status" = $7 WHERE "issue_id" = $8 returning *'
+            let params = [b_isbn, l_librarian_id, reader_name, return_date, date_returned, date_issued, status, id]
+            const sql = 'UPDATE "Issued_Books" SET "b_isbn"= $1, "l_librarian_id"= $2, "reader_name"= $3, "return_date" = $4,  "date_returned" = $5, "date_issued" = $6 ,"ib_status" = $7 WHERE "issue_id" = $8 returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {
