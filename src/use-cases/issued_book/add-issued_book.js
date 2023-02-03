@@ -11,12 +11,12 @@ const createIssued_Book = ({ issued_BookDB, registerIssued_Books_Entity }) => {
         if (checkb_isbn.length === 0) {
             throw new Error('Book Does not Exist')
         }
-        const checkl_librarian_id = await issued_BookDB.checkl_librarian_id({
-            l_librarian_id: entity.getl_librarian_id(),
-        })
-        if (checkl_librarian_id.length === 0) {
-            throw new Error('Librarian Does not Exist')
-        }
+        // const checkl_librarian_id = await issued_BookDB.checkl_librarian_id({
+        //     l_librarian_id: entity.getl_librarian_id(),
+        // })
+        // if (checkl_librarian_id.length === 0) {
+        //     throw new Error('Librarian Does not Exist')
+        // }
         // const checkr_reader_id = await issued_BookDB.checkr_reader_id({
         //     r_reader_id: entity.getr_reader_id(),
         // })
