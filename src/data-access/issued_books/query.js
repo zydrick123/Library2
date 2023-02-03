@@ -40,7 +40,7 @@ const issued_BooksQuery = ({ conn }) => {
         try {
             const connect = await conn()
             let params = [b_isbn, l_librarian_id, r_reader_id, return_date, date_returned, date_issued, status, id]
-            const sql = 'UPDATE "Issued_Books" SET "b_isbn"= $1, "l_librarian_id"= $2, "r_reader_id"= $3, "return_date" = $4,  "date_returned" = $5, "date_issued" = $6 ,"status" = $7 WHERE "issue_id" = $8 returning *'
+            const sql = 'UPDATE "Issued_Books" SET "b_isbn"= $1, "l_librarian_id"= $2, "r_reader_id"= $3, "return_date" = $4,  "date_returned" = $5, "date_issued" = $6 ,"ib_status" = $7 WHERE "issue_id" = $8 returning *'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {
@@ -96,7 +96,7 @@ const issued_BooksQuery = ({ conn }) => {
         try {
             const connect = await conn()
             let params = ['Overdue', issue_id]
-            const sql = 'Update "Issued_Books" Set "status" = $1 WHERE "issue_id" = $2'
+            const sql = 'Update "Issued_Books" Set "ib_status" = $1 WHERE "issue_id" = $2'
             const response = await connect.query(sql, params)
             return response.rows
         } catch (error) {

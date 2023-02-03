@@ -4,9 +4,7 @@ const makeIssued_Book = ({ data }) => {
     if (!b_isbn) {
         throw new Error('Please enter b_isbn')
     }
-    if (!l_librarian_id) {
-        throw new Error('Please enter l_librarian_id')
-    }
+
     if (!r_reader_id) {
         throw new Error('Please enter r_reader_id')
     }

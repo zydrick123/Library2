@@ -1,4 +1,4 @@
-
+const date = require('date-and-time')
 
 const getAllIssued_Book = ({ issued_BookDB }) => {
     return async function list() {
@@ -22,13 +22,25 @@ const getAllIssued_Book = ({ issued_BookDB }) => {
 
             const dataValue = {}
             dataValue.issue_id = data.issue_id
-
-            dataValue.return_date = data.return_date
+            let date1 = new Date()
+            let date2 = new Date(data.return_date)
+            let datef = date.format(date1, 'MM/DD/YYYY')
+            let datef2 = date.format(date2, 'MM/DD/YYYY')
+            // dataValue.return_date = data.return_date
+            if (datef > datef2) {
+                console.log('overdue')
+                const res = await issued_BookDB.autoupdate({
+                    issue_id: data.issue_id
+                })
+                dataValue.ib_status = "Overdue"
+            } else {
+                dataValue.ib_status = data.ib_status
+            }
             dataValue.date_returned = data.date_returned
             dataValue.date_issued = data.date_issued
             // await comparedate({ d1: dataValue.return_date, issue_id: dataValue.issue_id })
 
-            dataValue.status = data.status
+            // dataValue.ib_status = data.ib_status
             dataValue.b_isbn = data.b_isbn
             dataValue.title = data.title
             dataValue.r_reader_id = data.r_reader_id
@@ -37,9 +49,10 @@ const getAllIssued_Book = ({ issued_BookDB }) => {
             dataValue.l_librarian_id = data.l_librarian_id
             dataValue.first_name = data.first_name
             dataValue.last_name = data.last_name
-
-
+            console.log(datef2)
+            console.log(datef)
             issued_BookList.push(dataValue)
+
 
         }
 
