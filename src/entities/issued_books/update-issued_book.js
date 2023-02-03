@@ -1,19 +1,6 @@
 const updateIssued_Book = ({ data }) => {
     const { b_isbn, reader_name, return_date, date_returned, date_issued, status, id } = data;
-    if (!b_isbn) {
-        throw new Error('Please enter b_isbn')
-    }
 
-    if (!reader_name) {
-        throw new Error('Please enter reader_name')
-    }
-    if (!return_date) {
-        throw new Error('Please enter return_date')
-    }
-
-    if (!date_issued) {
-        throw new Error('Please enter date_issued')
-    }
 
     if (!id) {
 
