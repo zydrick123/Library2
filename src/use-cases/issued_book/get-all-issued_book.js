@@ -27,7 +27,7 @@ const getAllIssued_Book = ({ issued_BookDB }) => {
             let datef = date.format(date1, 'MM/DD/YYYY')
             let datef2 = date.format(date2, 'MM/DD/YYYY')
             // dataValue.return_date = data.return_date
-            if (datef > datef2) {
+            if (datef > datef2 && data.date_returned == null) {
                 console.log('overdue')
                 const res = await issued_BookDB.autoupdate({
                     issue_id: data.issue_id
