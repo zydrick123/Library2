@@ -14,9 +14,7 @@ const updateBook = ({ data }) => {
         throw new Error('Please enter no_of_pages')
     }
 
-    if (!no_of_copies) {
-        throw new Error('Please enter no_of_copies')
-    }
+
     if (!shelf) {
         throw new Error('Please enter shelf')
     }
