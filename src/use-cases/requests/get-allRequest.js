@@ -11,7 +11,7 @@ const getAllRequest = ({ requestDB }) => {
             // dataValue.r_reader_id = data.r_reader_id
             dataValue.b_isbn = data.b_isbn
             dataValue.title = data.title
-
+            dataValue.r_status = data.r_status
 
 
             requestList.push(dataValue)
