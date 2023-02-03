@@ -44,9 +44,7 @@ const getAllIssued_Book = ({ issued_BookDB }) => {
             dataValue.b_isbn = data.b_isbn
             dataValue.title = data.title
             dataValue.reader_name = data.reader_name
-            dataValue.l_librarian_id = data.l_librarian_id
-            dataValue.first_name = data.first_name
-            dataValue.last_name = data.last_name
+
 
             issued_BookList.push(dataValue)
 

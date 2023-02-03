@@ -27,7 +27,7 @@ const createIssued_Book = ({ issued_BookDB, registerIssued_Books_Entity }) => {
 
         const res = await issued_BookDB.createIssued_Books({
             b_isbn: entity.getb_isbn(),
-            l_librarian_id: entity.getl_librarian_id(),
+
             reader_name: entity.getreader_name(),
             return_date: entity.getreturn_date(),
 

@@ -8,7 +8,7 @@ const updateIssued_Book = ({ issued_BookDB, updateIssued_Books_Entity }) => {
 
         const res = await issued_BookDB.updateIssued_Books({
             b_isbn: entity.getb_isbn(),
-            l_librarian_id: entity.getl_librarian_id(),
+
             reader_name: entity.getreader_name(),
             return_date: entity.getreturn_date(),
 
