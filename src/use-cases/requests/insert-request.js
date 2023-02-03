@@ -3,15 +3,15 @@ const createRequest = ({ requestDB, registerRequest_Entity }) => {
 
         let entity = await registerRequest_Entity({ data })
 
-        const isExisting = await requestDB.isExisting({
-            // r_reader_id: entity.getr_reader_id(),
-            b_isbn: entity.getb_isbn(),
-            date_requested: entity.getdate_requested()
-        })
+        // const isExisting = await requestDB.isExisting({
+        //     // r_reader_id: entity.getr_reader_id(),
+        //     b_isbn: entity.getb_isbn(),
+        //     date_requested: entity.getdate_requested()
+        // })
 
-        if (isExisting.length > 0) {
-            throw new Error('Request exist')
-        }
+        // if (isExisting.length > 0) {
+        //     throw new Error('Request exist')
+        // }
 
 
         // const checkr_reader_id = await requestDB.checkr_reader_id({
