@@ -27,7 +27,7 @@ const issued_BooksQuery = ({ conn }) => {
             const connect = await conn()
 
             let params = [b_isbn, reader_name, return_date, date_returned, date_issued, 'active']
-            let sql = 'INSERT INTO "Issued_Books" ( "b_isbn",  "reader_name", "return_date",  "date_returned", "date_issued" ,"ib_status") VALUES ($1,$2,$3,$4,$5,$6,$7) returning *'
+            let sql = 'INSERT INTO "Issued_Books" ( "b_isbn",  "reader_name", "return_date",  "date_returned", "date_issued" ,"ib_status") VALUES ($1,$2,$3,$4,$5,$6) returning *'
             const response = await connect.query(sql, params)
 
             return response.rows
