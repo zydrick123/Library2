@@ -8,7 +8,7 @@ const updateRequest = ({ requestDB, updateRequest_Entity }) => {
         let entity = await updateRequest_Entity({ data })
 
         const res = await requestDB.updateRequest({
-            r_reader_id: entity.getr_reader_id(),
+            // r_reader_id: entity.getr_reader_id(),
             b_isbn: entity.getb_isbn(),
 
             date_requested: entity.getdate_requested(),

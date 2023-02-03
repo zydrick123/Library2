@@ -39,8 +39,8 @@ const RequestQuery = ({ conn }) => {
 
         try {
             const connection = await conn()
-            const params = [r_reader_id, b_isbn, date_requested, 'active']
-            let sql = 'INSERT INTO "Requests" ("r_reader_id", "b_isbn", "date_requested", "r_status") VALUES ($1,$2,$3,$4) returning *'
+            const params = [b_isbn, date_requested, 'active']
+            let sql = 'INSERT INTO "Requests" ( "b_isbn", "date_requested", "r_status") VALUES ($1,$2,$3) returning *'
             const response = await connection.query(sql, params)
             return response.rows
         } catch (error) {
@@ -62,10 +62,10 @@ const RequestQuery = ({ conn }) => {
 
         }
     }
-    async function isExisting({ r_reader_id, b_isbn, date_requested }) {
+    async function isExisting({ b_isbn, date_requested }) {
         try {
             const connection = await conn()
-            let sql = 'SELECT * FROM "Requests" WHERE "r_reader_id" = $1 AND "b_isbn" = $2 AND "date_requested" = $3';
+            let sql = 'SELECT * FROM "Requests" WHERE  "b_isbn" = $1 AND "date_requested" = $2';
             let params = [r_reader_id, b_isbn, date_requested]
             const response = await connection.query(sql, params)
 
@@ -136,7 +136,7 @@ const RequestQuery = ({ conn }) => {
             console.log('error ID')
         }
     }
-    async function updateRequest({ r_reader_id, b_isbn, date_requested, id }) {
+    async function updateRequest({ b_isbn, date_requested, id }) {
 
 
 
@@ -144,8 +144,8 @@ const RequestQuery = ({ conn }) => {
         try {
             const connect = await conn()
 
-            let params = [r_reader_id, b_isbn, date_requested, id, 'active']
-            const sql = 'UPDATE "Requests" SET "r_reader_id" = $1,"b_isbn" = $2, "date_requested" = $3 ,"r_status"= $5 WHERE "request_id" = $4 returning *'
+            let params = [b_isbn, date_requested, id, 'active']
+            const sql = 'UPDATE "Requests" SET "b_isbn" = $1, "date_requested" = $2 ,"r_status"= $4 WHERE "request_id" = $3 returning *'
 
             const response = await connect.query(sql, params)
 
