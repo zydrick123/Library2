@@ -35,7 +35,7 @@ const RequestQuery = ({ conn }) => {
     }
 
     //create Request
-    async function createRequest({ r_reader_id, b_isbn, date_requested }) {
+    async function createRequest({ b_isbn, date_requested }) {
 
         try {
             const connection = await conn()
@@ -66,7 +66,7 @@ const RequestQuery = ({ conn }) => {
         try {
             const connection = await conn()
             let sql = 'SELECT * FROM "Requests" WHERE  "b_isbn" = $1 AND "date_requested" = $2';
-            let params = [r_reader_id, b_isbn, date_requested]
+            let params = [b_isbn, date_requested]
             const response = await connection.query(sql, params)
 
             return response.rows
