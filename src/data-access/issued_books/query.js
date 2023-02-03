@@ -13,7 +13,7 @@ const issued_BooksQuery = ({ conn }) => {
         try {
 
             const connect = await conn()
-            let sql = 'SELECT * FROM "Issued_Books" INNER JOIN "Books" ON "Issued_Books".b_isbn = "Books".isbn  INNER JOIN "Readers" on "Issued_Books".r_reader_id = "Readers".reader_id inner join "Librarians" on "Issued_Books".l_librarian_id = "Librarians".librarian_id'
+            let sql = 'SELECT * FROM "Issued_Books" INNER JOIN "Books" ON "Issued_Books".b_isbn = "Books".isbn  inner join "Librarians" on "Issued_Books".l_librarian_id = "Librarians".librarian_id'
             const response = await connect.query(sql)
 
             return response
