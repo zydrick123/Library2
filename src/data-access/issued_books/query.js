@@ -36,10 +36,10 @@ const issued_BooksQuery = ({ conn }) => {
         }
     }
 
-    async function updateIssued_Books({ b_isbn, reader_name, return_date, date_returned, date_issued, status, id }) {
+    async function updateIssued_Books({ b_isbn, reader_name, return_date, date_returned, date_issued, id }) {
         try {
             const connect = await conn()
-            let params = [b_isbn, reader_name, return_date, date_returned, date_issued, status, id]
+            let params = [b_isbn, reader_name, return_date, date_returned, date_issued, 'returned', id]
             const sql = 'UPDATE "Issued_Books" SET "b_isbn"= $1, "reader_name"= $2, "return_date" = $3,  "date_returned" = $4, "date_issued" = $5 ,"ib_status" = $6 WHERE "issue_id" = $7 returning *'
             const response = await connect.query(sql, params)
             return response.rows
