@@ -47,8 +47,7 @@ const getAllIssued_Book = ({ issued_BookDB }) => {
             dataValue.l_librarian_id = data.l_librarian_id
             dataValue.first_name = data.first_name
             dataValue.last_name = data.last_name
-            console.log(datef2)
-            console.log(datef)
+
             issued_BookList.push(dataValue)
 
 
